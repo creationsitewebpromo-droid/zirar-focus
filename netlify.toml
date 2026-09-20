@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "24.21.0"
 
+[[redirects]]
+  from = "https://zirar-focus.netlify.app/*"
+  to = "https://zirar-focus.fr/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
