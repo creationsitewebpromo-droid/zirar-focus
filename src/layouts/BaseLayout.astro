@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  path = Astro.url.pathname,
+  image = '/og-image.png',
+  noindex = false,
+  schema,
+} = Astro.props;
+const canonical = new URL(path, Astro.site).toString();
+const ogImage = new URL(image, Astro.site).toString();
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': new URL('/#studio', Astro.site).toString(),
+  name: 'Zirar Focus',
+  url: new URL('/', Astro.site).toString(),
+  description: 'Photographe et vidéaste de mariage et d’événement basé à Avignon, disponible en France, au Maroc et à l’international.',
+  image: ogImage,
+  sameAs: ['https://www.instagram.com/zirar_focus/'],
+  areaServed: [
+    { '@type': 'City', name: 'Avignon' },
+    { '@type': 'Country', name: 'France' },
+    { '@type': 'Country', name: 'Maroc' },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Prestations photo et film',
+    itemListElement: [
+      { '@type': 'OfferCatalog', name: 'Photographie de mariage' },
+      { '@type': 'OfferCatalog', name: 'Film de mariage' },
+      { '@type': 'OfferCatalog', name: 'Photographie et film événementiels' },
+    ],
+  },
+};
+const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])];
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#25251f" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Zirar Focus" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <header class="site-header">
+      <div class="header-inner wrap">
+        <a href="/" class="brand" aria-label="Zirar Focus, accueil">
+          <img class="brand-mark" src="/logo-mark.svg" alt="" width="42" height="42" />
+          <span class="brand-wordmark">ZIRAR <span>FOCUS</span></span>
+        </a>
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <a href="/photographe-mariage-avignon/">Mariage</a>
+          <a href="/photographe-evenement-avignon/">Événements</a>
+          <a href="/a-propos/">Le studio</a>
+          <a href="/contact/" class="nav-cta">Parlons de votre projet <span aria-hidden="true">↗</span></a>
+        </nav>
+        <details class="mobile-menu">
+          <summary aria-label="Ouvrir le menu"><span></span><span></span><span class="sr-only">Menu</span></summary>
+          <nav aria-label="Navigation mobile">
+            <a href="/photographe-mariage-avignon/">Mariage</a>
+            <a href="/photographe-evenement-avignon/">Événements</a>
+            <a href="/a-propos/">Le studio</a>
+            <a href="/contact/">Contact</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="contenu"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap footer-top">
+        <div>
+          <p class="eyebrow">Photo & film · Avignon</p>
+          <p class="footer-brand">Zirar Focus<span class="gold-dot">.</span></p>
+          <p>Des instants vrais, racontés avec sensibilité.</p>
+        </div>
+        <div class="footer-links">
+          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/a-propos/">Le studio</a></div>
+          <div><span>Échanger</span><a href="/contact/">Demander un devis</a><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+        </div>
+      </div>
+      <div class="wrap footer-bottom"><span>© {new Date().getFullYear()} Zirar Focus</span><span>Avignon · France · Maroc · International</span><a href="/confidentialite/">Confidentialité</a></div>
+    </footer>
+  </body>
+</html>
