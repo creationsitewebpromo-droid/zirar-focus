@@ -8,18 +8,19 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 - Dépôt de référence : `https://github.com/creationsitewebpromo-droid/zirar-focus`.
 - L’ancien hôte `zirar-focus.netlify.app` redirige en 301 vers le domaine personnalisé en conservant le chemin.
 - DNS Hostinger observé : apex vers Netlify, `www` en CNAME vers l’hôte Netlify et TXT de vérification Google. Ne pas modifier les autres domaines ou zones.
+- Le badge public « Powered by Netlify » est désactivé au niveau du projet et son absence a été revérifiée sur le domaine public.
 
 ## Indexation et mesures
 
 - Propriété Domaine Search Console `zirar-focus.fr` validée par DNS.
 - `sitemap-index.xml` soumis avec succès. L’accueil puis la galerie ont été ajoutés à la file d’exploration prioritaire via l’Inspection d’URL. Le site étant neuf, aucune performance organique historique fiable n’est encore disponible.
-- PageSpeed de référence avant l’ajout de la vidéo : 100/100 en laboratoire sur mobile et ordinateur pour performance, accessibilité, bonnes pratiques et SEO. La vidéo locale utilise `preload="none"` ; refaire la mesure après son déploiement.
+- PageSpeed Insights mobile relancé le 20 septembre 2026 à 22:41 après conversion des médias en WebP : **100/100** pour performance, accessibilité, bonnes pratiques et SEO ; LCP de laboratoire **1,1 s**, CLS **0,002**, TBT **0 ms**. Ces valeurs de laboratoire peuvent varier et aucune donnée utilisateur réelle n’est encore disponible.
 - Le premier Rich Results Test de l’accueil ne détectait aucun format éligible. Après publication du `VideoObject`, le test public de `https://zirar-focus.fr/galerie/` détecte **1 élément Vidéo valide, sans avertissement**. Cela rend la page éligible, sans garantir son affichage dans les résultats.
 - Une fiche Google Business Profile « Zirar Focus » a été créée dans le compte accessible, avec la catégorie « Photographe de mariage », Avignon comme zone desservie et `https://zirar-focus.fr/` comme site. Elle est **non vérifiée** : Google demande une adresse postale privée de validation, reportée faute de donnée confirmée. Le flux de personnalisation est ouvert à l'étape « Ajouter vos services » ; la fiche ne doit pas être présentée comme publique ou validée. L'autre établissement du compte n'a pas été modifié.
 
 ## Contenu et conversion
 
-- Les photos et la vidéo viennent des publications publiques de `@zirar_focus`. Quatre photos haute définition sont affichées dans les pages de conversion et la galerie. La vidéo 720p est chargée uniquement lorsque le visiteur la lance ; le Reel original reste lié pour la bande-son et la source.
+- Les photos et la vidéo viennent des publications publiques de `@zirar_focus`. Quatre photos haute définition sont affichées dans les pages de conversion et la galerie ; des variantes WebP de 800 à 1 600 px réduisent le poids sur mobile. La vidéo 720p est chargée uniquement lorsque le visiteur la lance ; le Reel original reste lié pour la bande-son et la source.
 - Netlify Forms détecte le formulaire `contact`. Une notification e-mail est active pour chaque nouvelle soumission, vers l’adresse du responsable saisie dans le tableau de bord Netlify et non inscrite dans le dépôt.
 - Le téléphone confirmé `+33 6 41 18 97 56` est publié. Les tarifs photo demandés par le propriétaire sont affichés comme points de départ : mariage à **1 730 €, 2 130 € et 2 480 €**, événementiel court à **330 €** ; les durées, déplacements et livrables exacts sont confirmés par devis. Le film reste sur devis.
 - Il manque encore une adresse postale privée pour la validation Google. La zone de service Avignon a été saisie dans le profil, sans validation Google à ce stade.
