@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Netlify exposes URL during production builds. The fallback is used for local previews.
-const site = process.env.PUBLIC_SITE_URL || process.env.URL || 'https://zirar-focus.netlify.app';
+// The custom domain is the canonical fallback; Netlify can override it explicitly.
+const site = process.env.PUBLIC_SITE_URL || 'https://zirar-focus.fr';
 
 export default defineConfig({
   site,
   integrations: [sitemap({ filter: (page) => !/\/(merci|confidentialite)\/$/.test(page) })],
-  build: { format: 'directory' },
+  build: { format: 'directory', inlineStylesheets: 'always' },
 });

@@ -23,6 +23,8 @@ Utiliser JSON-LD correspondant aux faits visibles : `Organization` ou `LocalBusi
 
 Exécuter la build, ouvrir toutes les pages clés sur mobile, vérifier la navigation et les formulaires, faire un crawl et examiner le HTML livré. Après déploiement, vérifier canonical, sitemap, robots, réponses HTTP, Rich Results Test et PageSpeed sur les URLs de production. Soumettre le sitemap à GSC si la propriété est vérifiée ; utiliser Inspection de l'URL pour les pages essentielles. Documenter les résultats mesurés et les points en attente d'indexation. Refaire PageSpeed après chargement effectif des images et scripts de production.
 
+Pour un domaine dont la zone DNS reste chez Hostinger, suivre la procédure de [raccordement Hostinger → Netlify et migration Search Console](domaine-hostinger-netlify-gsc.md). Ne pas recopier une ancienne adresse IP Netlify sans la confirmer dans le panneau du projet.
+
 ## Sources
 
 - [Astro : sitemap](https://docs.astro.build/fr/guides/integrations-guide/sitemap/)

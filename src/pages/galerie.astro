@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PortfolioGrid from '../components/PortfolioGrid.astro';
+import { portfolio } from '../data/portfolio';
+---
+
+<BaseLayout
+  title="Portfolio photo & film | Zirar Focus Avignon"
+  description="Découvrez le portfolio de Zirar Focus : portraits, spectacles, reportages et films réalisés à Avignon, en France et au Maroc."
+>
+  <section class="gallery-hero">
+    <div class="wrap gallery-hero__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Portfolio · Photo & film</p>
+        <h1>Le mouvement.<br />La lumière.<br /><em>Les visages.</em></h1>
+      </div>
+      <div class="gallery-hero__aside">
+        <p>Une sélection de reportages événementiels, de spectacles et de portraits réalisés par Zirar Focus.</p>
+        <p>Chaque image ouvre la publication originale sur Instagram.</p>
+        <span>Avignon · France · Maroc · International</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-page">
+    <div class="wrap">
+      <PortfolioGrid items={portfolio} />
+    </div>
+  </section>
+
+  <section class="gallery-note">
+    <div class="wrap gallery-note__grid">
+      <p class="eyebrow">Mariages & histoires privées</p>
+      <h2>Votre histoire ne ressemblera<br /><em>à aucune autre.</em></h2>
+      <div><p>Pour découvrir une galerie de mariage complète et imaginer votre reportage, présentez votre date, votre lieu et l’atmosphère de votre journée.</p><a class="button dark" href="/contact/">Recevoir le portfolio mariage <span class="arrow" aria-hidden="true">↗</span></a></div>
+    </div>
+  </section>
+
+  <section class="quote-panel">
+    <div class="wrap"><p class="eyebrow eyebrow--light">Créer la prochaine série</p><h2>Votre moment.<br /><em>Notre regard.</em></h2><p>Parlons de ce que vous souhaitez raconter en photo ou en film.</p><a class="button button--gold" href="/contact/">Commencer la conversation <span class="arrow" aria-hidden="true">↗</span></a></div>
+  </section>
+</BaseLayout>

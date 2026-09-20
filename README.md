@@ -11,7 +11,7 @@ npm run check
 npm run build
 ```
 
-Le site statique est généré dans `dist/`. `astro.config.mjs` utilise `PUBLIC_SITE_URL`, puis l’URL fournie par Netlify, puis `https://zirar-focus.netlify.app` pour les URL canoniques et le sitemap.
+Le site statique est généré dans `dist/`. `astro.config.mjs` utilise `PUBLIC_SITE_URL`, puis `https://zirar-focus.fr` comme domaine canonique pour les métadonnées et le sitemap.
 
 ## Déploiement Netlify
 
@@ -21,6 +21,6 @@ Le formulaire de contact utilise Netlify Forms. Vérifier après publication que
 
 ## Contenu et SEO
 
-Les images de la galerie proviennent des publications publiques du compte [@zirar_focus](https://www.instagram.com/zirar_focus/) ; elles illustrent des événements et portraits. Le logo SVG a été redessiné d’après le monogramme du profil. Ajouter des photos de mariages haute résolution et les coordonnées commerciales confirmées avant d’étendre le portfolio ou la fiche Google.
+Les onze images de la galerie proviennent des publications publiques du compte [@zirar_focus](https://www.instagram.com/zirar_focus/) ; elles illustrent des événements, spectacles et portraits. La couverture du Reel renvoie vers la vidéo originale sur Instagram. Le logo SVG a été redessiné d’après le monogramme du profil. Ajouter des photos de mariages haute résolution et les coordonnées commerciales confirmées avant d’étendre le portfolio ou la fiche Google.
 
 Le guide de travail SEO propre à ce projet est dans [`skills/zirar-focus-seo/SKILL.md`](skills/zirar-focus-seo/SKILL.md). Les prix, avis, résultats Google et classements ne doivent pas être inventés.

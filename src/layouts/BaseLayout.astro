@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import dmSansUrl from '../assets/fonts/dm-sans-latin.woff2?url';
+import italianaUrl from '../assets/fonts/italiana-latin.woff2?url';
 
 interface Props {
   title: string;
@@ -20,6 +22,7 @@ const {
 } = Astro.props;
 const canonical = new URL(path, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
+const pathname = Astro.url.pathname;
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -56,6 +59,8 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
     <meta name="google-site-verification" content="GmYJacDjcgqtOqrVOTzsYxavrHkDw1qB4s-SPWYoUyg" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={dmSansUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={italianaUrl} as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
@@ -77,18 +82,20 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
           <span class="brand-wordmark">ZIRAR <span>FOCUS</span></span>
         </a>
         <nav class="desktop-nav" aria-label="Navigation principale">
-          <a href="/photographe-mariage-avignon/">Mariage</a>
-          <a href="/photographe-evenement-avignon/">Événements</a>
-          <a href="/a-propos/">Le studio</a>
+          <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
+          <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
+          <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
+          <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
           <a href="/contact/" class="nav-cta">Parlons de votre projet <span aria-hidden="true">↗</span></a>
         </nav>
         <details class="mobile-menu">
-          <summary aria-label="Ouvrir le menu"><span></span><span></span><span class="sr-only">Menu</span></summary>
+          <summary aria-label="Menu principal"><span></span><span></span><span class="sr-only">Menu</span></summary>
           <nav aria-label="Navigation mobile">
-            <a href="/photographe-mariage-avignon/">Mariage</a>
-            <a href="/photographe-evenement-avignon/">Événements</a>
-            <a href="/a-propos/">Le studio</a>
-            <a href="/contact/">Contact</a>
+            <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
+            <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
+            <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
+            <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
+            <a href="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>Contact</a>
           </nav>
         </details>
       </div>
@@ -97,12 +104,12 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
     <footer class="site-footer">
       <div class="wrap footer-top">
         <div>
-          <p class="eyebrow">Photo & film · Avignon</p>
+          <p class="eyebrow eyebrow--light">Photo & film · Avignon</p>
           <p class="footer-brand">Zirar Focus<span class="gold-dot">.</span></p>
           <p>Des instants vrais, racontés avec sensibilité.</p>
         </div>
         <div class="footer-links">
-          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/a-propos/">Le studio</a></div>
+          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/galerie/">Portfolio</a><a href="/a-propos/">Le studio</a></div>
           <div><span>Échanger</span><a href="/contact/">Demander un devis</a><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
         </div>
       </div>

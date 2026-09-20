@@ -1,0 +1,38 @@
+---
+import type { PortfolioItem } from '../data/portfolio';
+
+interface Props {
+  items: PortfolioItem[];
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<div class:list={['portfolio-grid', { 'portfolio-grid--compact': compact }]}>
+  {items.map((item, index) => (
+    <a
+      class:list={['portfolio-card', `portfolio-card--${item.format}`, { 'portfolio-card--reel': item.reel }]}
+      href={item.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${item.title} — ouvrir la publication Instagram`}
+    >
+      <img
+        src={item.src}
+        alt={item.alt}
+        width={item.width}
+        height={item.height}
+        loading={index < 2 && !compact ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+      <span class="portfolio-shade" aria-hidden="true"></span>
+      {item.reel && <span class="portfolio-play" aria-hidden="true"><span>▶</span></span>}
+      <span class="portfolio-meta">
+        <span class="portfolio-count">{String(index + 1).padStart(2, '0')}</span>
+        <span><strong>{item.title}</strong><small>{item.category}</small></span>
+        <span class="portfolio-open" aria-hidden="true">↗</span>
+      </span>
+    </a>
+  ))}
+</div>
