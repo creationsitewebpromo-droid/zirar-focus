@@ -32,7 +32,7 @@ export const GET: APIRoute = ({ site }) => {
       <video:description>Extrait filmé par Zirar Focus lors d’un concert et présenté dans le portfolio du studio.</video:description>
       <video:content_loc>${escapeXml(new URL('/videos/zirar-focus-reel-720p.mp4', base).toString())}</video:content_loc>
       <video:duration>35</video:duration>
-      <video:publication_date>2026-08-09</video:publication_date>
+      <video:publication_date>2026-08-09T09:57:24Z</video:publication_date>
       <video:uploader info="${escapeXml(new URL('/', base).toString())}">Zirar Focus</video:uploader>
       <video:family_friendly>yes</video:family_friendly>
       <video:requires_subscription>no</video:requires_subscription>
