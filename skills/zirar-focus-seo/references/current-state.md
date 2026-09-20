@@ -14,7 +14,7 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 - Propriété Domaine Search Console `zirar-focus.fr` validée par DNS.
 - `sitemap-index.xml` soumis avec succès et inspection de l’accueil demandée. Le site étant neuf, aucune performance organique historique fiable n’est encore disponible.
 - PageSpeed de référence avant l’ajout de la vidéo : 100/100 en laboratoire sur mobile et ordinateur pour performance, accessibilité, bonnes pratiques et SEO. La vidéo locale utilise `preload="none"` ; refaire la mesure après son déploiement.
-- Le premier Rich Results Test de l’accueil ne détectait aucun format éligible. La galerie possède désormais un `VideoObject` et un sitemap média ; retester l’URL publique après publication.
+- Le premier Rich Results Test de l’accueil ne détectait aucun format éligible. Après publication du `VideoObject`, le test public de `https://zirar-focus.fr/galerie/` détecte **1 élément Vidéo valide, sans avertissement**. Cela rend la page éligible, sans garantir son affichage dans les résultats.
 
 ## Contenu et conversion
 
