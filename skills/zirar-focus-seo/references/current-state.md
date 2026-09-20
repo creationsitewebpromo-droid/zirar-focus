@@ -15,12 +15,13 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 - `sitemap-index.xml` soumis avec succès. L’accueil puis la galerie ont été ajoutés à la file d’exploration prioritaire via l’Inspection d’URL. Le site étant neuf, aucune performance organique historique fiable n’est encore disponible.
 - PageSpeed de référence avant l’ajout de la vidéo : 100/100 en laboratoire sur mobile et ordinateur pour performance, accessibilité, bonnes pratiques et SEO. La vidéo locale utilise `preload="none"` ; refaire la mesure après son déploiement.
 - Le premier Rich Results Test de l’accueil ne détectait aucun format éligible. Après publication du `VideoObject`, le test public de `https://zirar-focus.fr/galerie/` détecte **1 élément Vidéo valide, sans avertissement**. Cela rend la page éligible, sans garantir son affichage dans les résultats.
+- Une fiche Google Business Profile « Zirar Focus » a été créée dans le compte accessible, avec la catégorie « Photographe de mariage », Avignon comme zone desservie et `https://zirar-focus.fr/` comme site. Elle est **non vérifiée** : Google demande une adresse postale privée de validation, reportée faute de donnée confirmée. Le flux de personnalisation est ouvert à l'étape « Ajouter vos services » ; la fiche ne doit pas être présentée comme publique ou validée. L'autre établissement du compte n'a pas été modifié.
 
 ## Contenu et conversion
 
 - Les photos et la vidéo viennent des publications publiques de `@zirar_focus`. La vidéo 720p est chargée uniquement lorsque le visiteur la lance ; le Reel original reste lié pour la bande-son et la source.
 - Netlify Forms détecte le formulaire `contact`. Aucune soumission n’était présente et aucune notification e-mail n’était configurée lors du contrôle.
-- Il manque encore une adresse e-mail professionnelle confirmée pour la notification, ainsi qu’un téléphone, une adresse ou zone de service vérifiable et les tarifs propres à Zirar Focus.
+- Il manque encore une adresse e-mail professionnelle confirmée pour la notification, ainsi qu’un téléphone, une adresse postale privée pour la validation Google et les tarifs propres à Zirar Focus. La zone de service Avignon a été saisie dans le profil, sans validation Google à ce stade.
 - Ne pas publier de faux prix, de faux avis ou une adresse récupérée depuis un compte technique.
 
 ## Recherche de demande
@@ -31,6 +32,6 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 
 ## Actions externes encore dépendantes du propriétaire
 
-- Créer ou finaliser la fiche Google Business Profile après confirmation du nom réel, de la catégorie, du téléphone et du mode d’accueil : adresse publique ou entreprise de zone de service.
+- Finaliser et faire vérifier la fiche Google Business Profile avec une adresse postale réelle fournie par le propriétaire (Google indique qu'elle ne sera pas visible publiquement dans ce flux). Confirmer les services réellement proposés avant de les cocher et fournir un téléphone professionnel si la fiche doit afficher les appels.
 - Configurer la notification Netlify vers l’adresse professionnelle confirmée.
 - Ajouter des reportages de mariage haute définition avec autorisation de publication et les vrais livrables ou tarifs.

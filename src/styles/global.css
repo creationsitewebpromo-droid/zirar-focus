@@ -36,7 +36,7 @@ button{cursor:pointer}
 .brand{display:flex;align-items:center;gap:13px;white-space:nowrap}
 .brand-mark{display:block;width:43px;height:43px;object-fit:cover}
 .brand-wordmark{font-size:15px;letter-spacing:.31em;font-weight:700;line-height:1.05}
-.brand-wordmark span{display:block;color:var(--gold-bright);font-size:9px;font-weight:600;letter-spacing:.64em;margin-top:7px}
+.brand-wordmark span{display:block;color:var(--gold-bright);font-size:10px;font-weight:600;letter-spacing:.54em;margin-top:7px}
 .desktop-nav{display:flex;align-items:center;gap:clamp(18px,2.3vw,38px);font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:650}
 .desktop-nav>a:not(.nav-cta){position:relative;padding:31px 0 29px;color:#e6e0d5}
 .desktop-nav>a:not(.nav-cta):after{content:'';position:absolute;height:1px;left:0;right:100%;bottom:22px;background:var(--gold-bright);transition:right .25s ease}
@@ -226,7 +226,7 @@ em{font-weight:400;color:var(--gold);font-style:italic}
 .film-feature__copy>p:not(.eyebrow){max-width:620px;margin-bottom:38px;color:#bfb9af;font-size:17px;line-height:1.8}
 .film-feature__media{position:relative;width:min(100%,520px);margin:0 0 0 auto;padding:12px;border:1px solid rgba(208,176,131,.5);background:#070806;box-shadow:34px 34px 0 rgba(208,176,131,.08)}
 .film-feature__media video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:#090a08}
-.film-feature__media figcaption{display:flex;justify-content:space-between;gap:18px;padding:14px 3px 2px;color:#aca79d;font-size:9px;letter-spacing:.15em;text-transform:uppercase}
+.film-feature__media figcaption{display:flex;justify-content:space-between;gap:18px;padding:14px 3px 2px;color:#c7c1b7;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
 .gallery-page{padding:clamp(70px,7vw,110px) 0 clamp(110px,12vw,190px);background:var(--ink)}
 .gallery-note{padding:clamp(100px,10vw,160px) 0;background:var(--cream)}
 .gallery-note__grid{display:grid;grid-template-columns:.35fr 1fr .65fr;gap:5vw;align-items:start}
@@ -271,7 +271,7 @@ em{font-weight:400;color:var(--gold);font-style:italic}
 .footer-bottom{border-top:1px solid #3f403a;display:flex;justify-content:space-between;gap:25px;padding:23px 0;color:#aaa79f;font-size:10px;text-transform:uppercase;letter-spacing:.14em}
 
 @media(max-width:1120px){
-  .desktop-nav{gap:16px;font-size:9px}.nav-cta{padding:12px 14px}
+  .desktop-nav{gap:16px;font-size:10px}.nav-cta{padding:12px 14px}
   .hero-home{grid-template-columns:48% 52%}.hero-home__copy{padding-right:4vw}.hero-home h1{font-size:clamp(60px,7vw,88px)}
   .statement-grid{grid-template-columns:.27fr 1.73fr}
   .gallery-note__grid{grid-template-columns:1fr 2fr}.gallery-note__grid>div:last-child{grid-column:2}
@@ -299,7 +299,7 @@ em{font-weight:400;color:var(--gold);font-style:italic}
   h1{font-size:clamp(54px,15vw,78px)}h2{font-size:clamp(45px,12vw,65px)}
   .brand-mark{width:38px;height:38px}.brand-wordmark{font-size:13px}
   .hero-home__copy{min-height:620px}.hero-home h1{font-size:clamp(56px,16vw,79px)}.hero-home__lead{font-size:16px}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .text-link{align-self:flex-start}.button{width:100%}
-  .hero-home__places{gap:8px}.hero-home__places i{width:10px}.hero-collage{height:650px;grid-template-columns:62% 38%;grid-template-rows:58% 42%}.hero-collage__line{left:calc(62% - 24px);top:calc(58% - 24px);width:48px;height:48px}.hero-collage__line:before{left:23px;height:66px}.hero-collage__line:after{top:23px;width:66px}.hero-shot figcaption{font-size:9px;left:10px;bottom:10px}
+  .hero-home__places{gap:8px}.hero-home__places i{width:10px}.hero-collage{height:650px;grid-template-columns:62% 38%;grid-template-rows:58% 42%}.hero-collage__line{left:calc(62% - 24px);top:calc(58% - 24px);width:48px;height:48px}.hero-collage__line:before{left:23px;height:66px}.hero-collage__line:after{top:23px;width:66px}.hero-shot figcaption{font-size:10px;left:10px;bottom:10px}
   .statement-copy{grid-template-columns:1fr;gap:15px}.marquee>div{justify-content:flex-start}
   .portfolio-grid{columns:1}.portfolio-card{margin-bottom:12px}.portfolio-meta{padding:18px}.portfolio-meta strong{font-size:28px}.portfolio-play{width:62px;height:62px}
   .service-row{grid-template-columns:32px 1fr auto;gap:14px;padding:30px 0}.service-row:hover{padding-left:10px}.service-row h3{font-size:35px}.service-row p{font-size:12px}.service-row small{line-height:1.4}
