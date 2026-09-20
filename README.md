@@ -23,4 +23,6 @@ Le formulaire de contact utilise Netlify Forms. La détection est active et une 
 
 Les visuels de la galerie proviennent des publications publiques du compte [@zirar_focus](https://www.instagram.com/zirar_focus/) ; quatre versions haute définition sont affichées sur le site. Un extrait visuel 720p du Reel est hébergé localement et chargé uniquement à la demande ; le lien vers la publication originale permet de retrouver sa bande-son et sa source. Le logo visible reprend l’image du profil. Le téléphone commercial confirmé est publié dans l’en-tête, le pied de page et la page de contact.
 
+La page `/tarifs-photographe-avignon/` centralise les offres mariage, séance et événement avec des liens vers un formulaire prérempli. Le fichier `public/llms.txt`, les données structurées, le sitemap et le maillage interne rendent les informations commerciales plus faciles à comprendre pour les moteurs de recherche et les assistants, sans garantir un classement.
+
 Le guide de travail SEO propre à ce projet est dans [`skills/zirar-focus-seo/SKILL.md`](skills/zirar-focus-seo/SKILL.md). Les prix, avis, résultats Google et classements ne doivent pas être inventés.

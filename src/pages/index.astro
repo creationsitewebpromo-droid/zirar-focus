@@ -28,9 +28,10 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
         <h1 id="hero-title">Les instants passent.<br /><em>Les images restent.</em></h1>
         <p class="hero-home__lead">Mariages, portraits et événements racontés avec un regard cinématographique, sensible et profondément humain.</p>
         <div class="hero-actions">
-          <a class="button button--gold" href="/contact/">Racontez votre projet <span class="arrow" aria-hidden="true">↗</span></a>
-          <a class="text-link text-link--light" href="/galerie/">Explorer le portfolio</a>
+          <a class="button button--gold" href="/contact/#devis">Vérifier ma date <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="text-link text-link--light" href="/tarifs-photographe-avignon/">Voir les tarifs</a>
         </div>
+        <p class="hero-offer-line"><strong>Séances dès 150 €</strong><span aria-hidden="true">·</span><strong>Mariage dès 1 750 €</strong></p>
         <div class="hero-home__signature"><span aria-hidden="true">✦</span><p>Une photographie qui se ressent.<br />Un film qui se revit.</p></div>
       </div>
       <div class="hero-home__places" aria-label="Zones d’intervention">
@@ -74,6 +75,39 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
     <div><span>Mariages</span><b>✦</b><span>Événements</span><b>✦</b><span>Portraits</span><b>✦</b><span>Films</span><b>✦</b><span>Avignon</span><b>✦</b><span>Provence</span></div>
   </div>
 
+  <section class="home-offers" aria-labelledby="home-offers-title">
+    <div class="wrap">
+      <div class="home-offers__head">
+        <div><p class="eyebrow">Réserver Zirar Focus · Avignon</p><h2 id="home-offers-title">Choisissez votre projet.<br /><em>Vérifiez votre date.</em></h2></div>
+        <div><p>Des prestations photo aux tarifs visibles, puis un devis qui confirme votre date, votre lieu et les options souhaitées.</p><a class="text-link" href="/tarifs-photographe-avignon/">Comparer tous les tarifs <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="home-offers__grid">
+        <article class="home-offer-card">
+          <span>01 · Mariage</span>
+          <h3>Votre journée,<br />en récit.</h3>
+          <p>Reportage des préparatifs jusqu’au cocktail, avec 250 photos ou plus et une galerie privée.</p>
+          <div><small>Forfait photo dès</small><strong>1 750 €</strong></div>
+          <a href="/contact/?offre=Mariage%20%E2%80%94%20Essentielle#devis">Vérifier ma date <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="home-offer-card home-offer-card--featured">
+          <span>02 · Séance photo</span>
+          <h3>Un moment<br />pour vous.</h3>
+          <p>Portrait, couple, famille, grossesse ou image professionnelle, guidé avec soin à Avignon.</p>
+          <div><small>Séance dès</small><strong>150 €</strong></div>
+          <a href="/contact/?offre=S%C3%A9ance%20%E2%80%94%20Express#devis">Choisir ma séance <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="home-offer-card">
+          <span>03 · Événement</span>
+          <h3>Votre énergie,<br />bien captée.</h3>
+          <p>Réception, spectacle, lancement ou rencontre professionnelle, jusqu’à 2 h 30.</p>
+          <div><small>Reportage photo dès</small><strong>330 €</strong></div>
+          <a href="/contact/?offre=%C3%89v%C3%A9nement#devis">Recevoir mon devis <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <p class="home-offers__reassurance"><span>✓ Images retouchées</span><span>✓ Livraison numérique</span><span>✓ Galerie privée</span><span>✓ Avignon & Provence</span></p>
+    </div>
+  </section>
+
   <section class="portfolio-section">
     <div class="wrap">
       <div class="section-head section-head--dark">
@@ -91,11 +125,11 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
         <p class="muted">Une présence attentive, une esthétique éditoriale et un accompagnement pensé autour de votre projet.</p>
       </div>
       <div class="service-list">
-        <a class="service-row" href="/photographe-mariage-avignon/"><span class="number">01</span><div><small>Émotion · Élégance · Héritage</small><h3>Mariages</h3><p>Photographie & film à Avignon, en Provence et à destination.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row" href="/photographe-evenement-avignon/"><span class="number">02</span><div><small>Énergie · Détails · Rencontres</small><h3>Événements</h3><p>Reportages pour vos célébrations, spectacles et projets professionnels.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
-        <a class="service-row" href="/contact/"><span class="number">03</span><div><small>Portrait · Film · Direction artistique</small><h3>Sur mesure</h3><p>Une création ajustée à votre univers, votre lieu et vos intentions.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row" href="/photographe-mariage-avignon/"><span class="number">01</span><div><small>Mariage · Photo dès 1 750 €</small><h3>Mariages</h3><p>Trois formules de reportage à Avignon, en Provence et à destination.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row" href="/photographe-evenement-avignon/"><span class="number">02</span><div><small>Événement · Photo dès 330 €</small><h3>Événements</h3><p>Reportages pour vos célébrations, spectacles et projets professionnels.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
+        <a class="service-row" href="/tarifs-photographe-avignon/#seances"><span class="number">03</span><div><small>Portrait · Couple · Famille · Dès 150 €</small><h3>Séances photo</h3><p>Des formats de 15 minutes à 1 h 30, avec des photos retouchées.</p></div><span class="row-arrow" aria-hidden="true">↗</span></a>
       </div>
-      <div class="services-tail"><p>Votre mariage à Avignon ou en Provence&nbsp;?</p><a class="text-link" href="/photographe-mariage-avignon/#tarifs">Voir les tarifs mariage <span aria-hidden="true">↗</span></a></div>
+      <div class="services-tail"><p>Vous avez déjà une date ou une idée de prestation&nbsp;?</p><a class="text-link" href="/tarifs-photographe-avignon/">Voir tous les tarifs <span aria-hidden="true">↗</span></a></div>
     </div>
   </section>
 
@@ -130,6 +164,6 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
   </section>
 
   <section class="quote-panel">
-    <div class="wrap"><p class="eyebrow eyebrow--light">Votre prochain chapitre</p><h2>Et si nous racontions<br /><em>votre histoire ensemble&nbsp;?</em></h2><p>Partagez la date, le lieu et l’atmosphère que vous imaginez. La conversation commence ici.</p><a class="button button--gold" href="/contact/">Parler de votre projet <span class="arrow" aria-hidden="true">↗</span></a></div>
+    <div class="wrap"><p class="eyebrow eyebrow--light">Votre prochain chapitre</p><h2>Et si nous racontions<br /><em>votre histoire ensemble&nbsp;?</em></h2><p>Partagez la date, le lieu et l’atmosphère que vous imaginez. La conversation commence ici.</p><a class="button button--gold" href="/contact/#devis">Vérifier ma date <span class="arrow" aria-hidden="true">↗</span></a></div>
   </section>
 </BaseLayout>

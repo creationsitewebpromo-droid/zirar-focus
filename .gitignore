@@ -6,3 +6,4 @@ dist/
 .env.*
 !.env.example
 seo-astro-netlify-playbook.skill
+reports/

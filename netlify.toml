@@ -11,6 +11,16 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/tarifs"
+  to = "/tarifs-photographe-avignon/"
+  status = 301
+
+[[redirects]]
+  from = "/tarifs/"
+  to = "/tarifs-photographe-avignon/"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]

@@ -24,11 +24,19 @@ const ogImage = new URL(image, Astro.site).toString();
 const pathname = Astro.url.pathname;
 const organization = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   '@id': new URL('/#studio', Astro.site).toString(),
   name: 'Zirar Focus',
   url: new URL('/', Astro.site).toString(),
   telephone: '+33 6 41 18 97 56',
+  priceRange: '150 € à 2 500 €',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+33 6 41 18 97 56',
+    contactType: 'reservations',
+    availableLanguage: ['fr'],
+    url: new URL('/contact/', Astro.site).toString(),
+  },
   description: 'Photographe et vidéaste de mariage et d’événement basé à Avignon, disponible en France, au Maroc et à l’international.',
   image: ogImage,
   logo: {
@@ -67,6 +75,15 @@ const organization = {
           '@id': new URL('/photographe-evenement-avignon/#service', Astro.site).toString(),
           name: 'Photographie et film événementiels',
           url: new URL('/photographe-evenement-avignon/', Astro.site).toString(),
+        },
+      },
+      {
+        '@type': 'Offer',
+        url: new URL('/tarifs-photographe-avignon/#seances', Astro.site).toString(),
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Séances photo, portraits, couples et familles',
+          url: new URL('/tarifs-photographe-avignon/#seances', Astro.site).toString(),
         },
       },
     ],
@@ -114,8 +131,8 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
         <nav class="desktop-nav" aria-label="Navigation principale">
           <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
           <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
+          <a href="/tarifs-photographe-avignon/" aria-current={pathname === '/tarifs-photographe-avignon/' ? 'page' : undefined}>Tarifs</a>
           <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
-          <a href="/photographe-mariage-avignon/#tarifs">Tarifs</a>
           <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
           <a href="/contact/" class="nav-cta">Parlons de votre projet <span aria-hidden="true">↗</span></a>
         </nav>
@@ -124,8 +141,8 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
           <nav aria-label="Navigation mobile">
             <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
             <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
+            <a href="/tarifs-photographe-avignon/" aria-current={pathname === '/tarifs-photographe-avignon/' ? 'page' : undefined}>Tarifs</a>
             <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
-            <a href="/photographe-mariage-avignon/#tarifs">Tarifs</a>
             <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
             <a href="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>Contact</a>
             <a href="tel:+33641189756">+33 6 41 18 97 56</a>
@@ -134,6 +151,10 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
       </div>
     </header>
     <main id="contenu"><slot /></main>
+    <nav class="mobile-conversion-bar" aria-label="Actions rapides">
+      <a href="tel:+33641189756"><span aria-hidden="true">☎</span> Appeler</a>
+      <a href="/contact/#devis">Demander un devis <span aria-hidden="true">↗</span></a>
+    </nav>
     <footer class="site-footer">
       <div class="wrap footer-top">
         <div>
@@ -142,11 +163,11 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
           <p>Des instants vrais, racontés avec sensibilité.</p>
         </div>
         <div class="footer-links">
-          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/galerie/">Portfolio</a><a href="/photographe-mariage-avignon/#tarifs">Tarifs</a><a href="/a-propos/">Le studio</a></div>
+          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/tarifs-photographe-avignon/">Tarifs</a><a href="/galerie/">Portfolio</a><a href="/a-propos/">Le studio</a></div>
           <div><span>Échanger</span><a href="/contact/">Demander un devis</a><a href="tel:+33641189756">+33 6 41 18 97 56</a><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
         </div>
       </div>
-      <div class="wrap footer-bottom"><span>© {new Date().getFullYear()} Zirar Focus</span><span>Avignon · France · Maroc · International</span><a href="/confidentialite/">Confidentialité</a></div>
+      <div class="wrap footer-bottom"><span>© {new Date().getFullYear()} Zirar Focus</span><span>Avignon · France · Maroc · International</span><a href="/confidentialite/">Confidentialité</a><a class="developer-credit" href="https://www.creationsitewebpro.com/" target="_blank" rel="noopener noreferrer">Développé par MT ↗</a></div>
     </footer>
   </body>
 </html>

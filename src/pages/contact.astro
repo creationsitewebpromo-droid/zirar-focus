@@ -12,9 +12,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="form-field"><label for="nom">Votre nom *</label><input id="nom" name="nom" autocomplete="name" required maxlength="120" /></div>
         <div class="form-field"><label for="email">Votre e-mail *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" /></div>
         <div class="form-field"><label for="telephone">Votre téléphone</label><input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" /></div>
-        <div class="form-field"><label for="type">Votre projet *</label><select id="type" name="type-de-projet" required><option value="" disabled selected>Choisir une prestation</option><option value="Mariage">Mariage</option><option value="Événement">Événement</option><option value="Autre projet">Autre projet</option></select></div>
+        <div class="form-field"><label for="type">Votre projet *</label><select id="type" name="type-de-projet" required><option value="" disabled selected>Choisir une prestation</option><option value="Mariage">Mariage</option><option value="Séance photo">Séance photo</option><option value="Événement">Événement</option><option value="Autre projet">Autre projet</option></select></div>
         <div class="form-field"><label for="format">Format souhaité *</label><select id="format" name="format-souhaite" required><option value="" disabled selected>Photo, film ou les deux ?</option><option value="Photo">Photo</option><option value="Film">Film</option><option value="Photo et film">Photo + film</option><option value="À définir">À définir ensemble</option></select></div>
-        <div class="form-field"><label for="offre">Offre envisagée</label><select id="offre" name="offre-envisagee"><option value="">À définir ensemble</option><option value="Mariage — Cérémonie">Mariage — Cérémonie</option><option value="Mariage — Journée">Mariage — Journée</option><option value="Mariage — Signature">Mariage — Signature</option><option value="Événement">Événement</option><option value="Film ou photo + film">Film ou photo + film</option></select></div>
+        <div class="form-field"><label for="offre">Offre envisagée</label><select id="offre" name="offre-envisagee"><option value="">À définir ensemble</option><option value="Mariage — Essentielle">Mariage — Essentielle · 1 750 €</option><option value="Mariage — Signature">Mariage — Signature · 2 150 €</option><option value="Mariage — Soirée">Mariage — Soirée · 2 500 €</option><option value="Séance — Express">Séance — Express · 150 €</option><option value="Séance — Séance photo">Séance photo · 250 €</option><option value="Séance — Audacieuse">Séance — Audacieuse · 350 €</option><option value="Événement">Événement · dès 330 €</option><option value="Film ou photo + film">Film ou photo + film · sur devis</option></select></div>
         <div class="form-field"><label for="date">Date envisagée</label><input id="date" name="date" type="date" /></div>
         <div class="form-field full"><label for="lieu">Lieu envisagé</label><input id="lieu" name="lieu" placeholder="Avignon, Provence, Maroc…" maxlength="200" /></div>
         <div class="form-field full"><label for="budget">Budget envisagé (facultatif)</label><input id="budget" name="budget-envisage" inputmode="numeric" placeholder="Ex. 2 000 €" maxlength="50" /></div>
@@ -22,6 +22,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <label class="form-check"><input type="checkbox" name="accord-confidentialite" value="oui" required /><span>J’accepte que mes informations soient utilisées pour répondre à ma demande, selon la <a href="/confidentialite/">politique de confidentialité</a>. *</span></label>
       <button class="button dark" type="submit">Envoyer ma demande <span class="arrow" aria-hidden="true">↗</span></button>
+      <p class="form-reassurance">Votre demande est transmise directement à Zirar Focus. Aucun paiement n’est demandé dans ce formulaire.</p>
     </form>
   </div>
 </BaseLayout>
@@ -32,7 +33,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   const formatSelect = document.querySelector<HTMLSelectElement>('#format');
   if (requestedOffer && offerSelect && [...offerSelect.options].some((option) => option.value === requestedOffer)) {
     offerSelect.value = requestedOffer;
-    if (projectSelect) projectSelect.value = requestedOffer.startsWith('Mariage') ? 'Mariage' : requestedOffer === 'Événement' ? 'Événement' : 'Autre projet';
+    if (projectSelect) projectSelect.value = requestedOffer.startsWith('Mariage') ? 'Mariage' : requestedOffer.startsWith('Séance') ? 'Séance photo' : requestedOffer === 'Événement' ? 'Événement' : 'Autre projet';
     if (formatSelect) formatSelect.value = requestedOffer.includes('Film') ? 'À définir' : 'Photo';
   }
 </script>

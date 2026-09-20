@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WeddingPricing from '../components/WeddingPricing.astro';
+import SessionPricing from '../components/SessionPricing.astro';
+import { sessionOffers, weddingOffers, weddingOptions } from '../data/offers';
+
+const offerItems = [
+  ...weddingOffers.map((offer) => ({
+    '@type': 'Offer',
+    price: String(offer.price),
+    priceCurrency: 'EUR',
+    url: new URL(`/contact/?offre=${encodeURIComponent(`Mariage — ${offer.name}`)}#devis`, Astro.site).toString(),
+    itemOffered: { '@type': 'Service', name: `Reportage mariage ${offer.name}`, areaServed: 'Avignon' },
+  })),
+  ...sessionOffers.map((offer) => ({
+    '@type': 'Offer',
+    price: String(offer.price),
+    priceCurrency: 'EUR',
+    url: new URL(`/contact/?offre=${encodeURIComponent(`Séance — ${offer.name}`)}#devis`, Astro.site).toString(),
+    itemOffered: { '@type': 'Service', name: `Séance photo ${offer.name}`, areaServed: 'Avignon' },
+  })),
+  {
+    '@type': 'Offer',
+    price: '330',
+    priceCurrency: 'EUR',
+    url: new URL('/contact/?offre=%C3%89v%C3%A9nement#devis', Astro.site).toString(),
+    itemOffered: { '@type': 'Service', name: 'Reportage photo événementiel', areaServed: 'Avignon' },
+  },
+];
+
+const faqItems = [
+  ['Quel est le tarif d’un photographe de mariage à Avignon ?', 'Les forfaits photo mariage Zirar Focus sont affichés à 1 750 €, 2 150 € et 2 500 € selon la durée de couverture, le nombre minimal de photos et l’heure de fin.'],
+  ['Que comprennent les forfaits mariage ?', 'Chaque formule comprend les photos de couple, le traitement professionnel en haute définition, la livraison numérique et une galerie web privée.'],
+  ['Combien coûte une séance photo à Avignon ?', 'La séance Express est proposée à 150 €, la séance d’une heure à 250 € et la formule Audacieuse à 350 €.'],
+  ['La vidéo est-elle comprise ?', 'Les prix affichés concernent la photographie. Un film ou une formule photo et film reçoit une proposition personnalisée.'],
+  ['Comment réserver une date ?', 'Envoyez la date, le lieu et la prestation souhaitée. La réservation est confirmée après validation de la disponibilité, du devis et des conditions de la prestation.'],
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': new URL('/tarifs-photographe-avignon/#page', Astro.site).toString(),
+    name: 'Tarifs photographe à Avignon — Zirar Focus',
+    url: new URL('/tarifs-photographe-avignon/', Astro.site).toString(),
+    description: 'Tarifs des reportages mariage, séances photo et événements proposés par Zirar Focus à Avignon.',
+    mainEntity: { '@type': 'OfferCatalog', name: 'Tarifs photo Zirar Focus', itemListElement: offerItems },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+  },
+];
+---
+
+<BaseLayout
+  title="Tarifs photographe Avignon : mariage & séance | Zirar Focus"
+  description="Découvrez les tarifs Zirar Focus à Avignon : mariage dès 1 750 €, séance photo dès 150 € et reportage événementiel dès 330 €. Vérifiez votre date."
+  schema={schema}
+>
+  <section class="rates-hero">
+    <div class="wrap rates-hero__grid">
+      <div>
+        <p class="eyebrow eyebrow--light">Tarifs & réservation · Avignon</p>
+        <h1>Des services clairs.<br /><em>Des prix visibles.</em></h1>
+      </div>
+      <div class="rates-hero__aside">
+        <p>Choisissez la formule qui se rapproche de votre projet. Votre devis confirme ensuite la date, le lieu, les déplacements et les options.</p>
+        <div class="rates-hero__actions"><a class="button button--gold" href="/contact/#devis">Vérifier ma date <span aria-hidden="true">↗</span></a><a href="tel:+33641189756">Ou appeler le +33 6 41 18 97 56</a></div>
+      </div>
+    </div>
+    <div class="wrap rates-trust" aria-label="Services inclus"><span>Images retouchées</span><span>Livraison numérique</span><span>Galerie privée</span><span>Avignon & Provence</span></div>
+  </section>
+
+  <nav class="rate-jump" aria-label="Accès rapide aux tarifs"><div class="wrap"><a href="#tarifs">Mariage dès 1 750 €</a><a href="#seances">Séances dès 150 €</a><a href="#evenements">Événement dès 330 €</a></div></nav>
+
+  <WeddingPricing />
+  <SessionPricing />
+
+  <section class="event-offer" id="evenements">
+    <div class="wrap event-offer__grid">
+      <div><p class="eyebrow eyebrow--light">Événements · Avignon</p><h2>Votre événement,<br /><em>prêt à être partagé.</em></h2><p>Réception, spectacle, lancement ou rencontre professionnelle : une couverture photo courte comprend la prise de vue, la sélection, la retouche et la remise numérique.</p></div>
+      <article><span>Jusqu’à 2 h 30</span><strong>330 €</strong><small>reportage photo · à partir de</small><a href="/contact/?offre=%C3%89v%C3%A9nement#devis">Recevoir mon devis <span aria-hidden="true">↗</span></a></article>
+    </div>
+  </section>
+
+  <section class="rates-options">
+    <div class="wrap rates-options__grid">
+      <div><p class="eyebrow">Options mariage</p><h2>Composez une formule<br /><em>qui vous ressemble.</em></h2><p>Ajoutez un album ou une séance avant ou après le mariage. Les options sont confirmées avec votre reportage principal.</p></div>
+      <div class="option-list">{weddingOptions.map((option) => <div><span>{option.name}</span><strong>{option.price}</strong></div>)}</div>
+    </div>
+  </section>
+
+  <section class="booking-steps">
+    <div class="wrap"><p class="eyebrow">Réserver Zirar Focus</p><h2>De votre demande<br /><em>à vos images.</em></h2><div class="booking-steps__grid"><article><span>01</span><h3>Votre date</h3><p>Indiquez la prestation, la date et le lieu pour vérifier la disponibilité.</p></article><article><span>02</span><h3>Votre devis</h3><p>Vous recevez une proposition qui précise la couverture, les options et les déplacements.</p></article><article><span>03</span><h3>La préparation</h3><p>Nous échangeons sur le programme, les personnes et l’atmosphère souhaitée.</p></article><article><span>04</span><h3>La livraison</h3><p>Les images sélectionnées et retouchées sont remises selon la formule choisie.</p></article></div></div>
+  </section>
+
+  <section class="section" style="background:var(--cream)"><div class="wrap faq"><p class="eyebrow">Questions fréquentes · Tarifs</p><h2>Avant de <em>réserver.</em></h2>{faqItems.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
+
+  <section class="quote-panel"><div class="wrap"><p class="eyebrow">Votre projet commence ici</p><h2>Une date en tête&nbsp;?<br /><em>Vérifions-la.</em></h2><p>Présentez votre mariage, votre séance ou votre événement et recevez une proposition adaptée.</p><a class="button button--gold" href="/contact/#devis">Demander mon devis <span class="arrow" aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>
+
+<style>
+  .rates-hero{padding:clamp(90px,10vw,150px) 0 0;background:#112118;color:#f5f8f3}
+  .rates-hero__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.55fr);gap:clamp(45px,8vw,130px);align-items:end;padding-bottom:clamp(65px,8vw,115px)}
+  .rates-hero h1{margin:0;font-size:clamp(58px,7vw,108px)}.rates-hero h1 em{color:#c5e8ce}
+  .rates-hero__aside>p{color:#c7d0c8;font-size:17px;line-height:1.75}
+  .rates-hero__actions{display:flex;flex-direction:column;align-items:start;gap:18px;margin-top:30px}.rates-hero__actions>a:last-child{border-bottom:1px solid #c5e8ce;color:#dcebe0;font-size:12px}
+  .rates-trust{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #3a5343}.rates-trust span{padding:20px 18px;border-right:1px solid #3a5343;color:#c5e8ce;font-size:10px;font-weight:750;letter-spacing:.14em;text-align:center;text-transform:uppercase}.rates-trust span:last-child{border-right:0}
+  .rate-jump{position:sticky;top:124px;z-index:25;background:#c5e8ce;border-bottom:1px solid #91b39c}.rate-jump .wrap{display:flex;justify-content:center;gap:clamp(20px,5vw,80px)}.rate-jump a{padding:17px 0;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .event-offer{padding:clamp(90px,10vw,150px) 0;background:#14271c;color:#f5f8f3;scroll-margin-top:175px}.event-offer__grid{display:grid;grid-template-columns:1.15fr .55fr;gap:clamp(45px,10vw,160px);align-items:center}.event-offer h2{margin:0 0 30px}.event-offer h2 em{color:#c5e8ce}.event-offer p:not(.eyebrow){max-width:690px;color:#bec9c0;font-size:17px;line-height:1.8}.event-offer article{display:flex;flex-direction:column;padding:clamp(30px,4vw,55px);background:#f6f8f4;color:#111b17}.event-offer article>span{color:#355f49;font-size:11px;font-weight:750;letter-spacing:.14em;text-transform:uppercase}.event-offer article strong{margin:40px 0 3px;font-size:clamp(72px,8vw,120px);line-height:1;letter-spacing:-.07em}.event-offer article small{color:#657067}.event-offer article a{display:flex;justify-content:space-between;margin-top:45px;padding-top:17px;border-top:1px solid #cbd9cf;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .rates-options{padding:clamp(90px,10vw,150px) 0;background:#eaf0e8}.rates-options__grid{display:grid;grid-template-columns:1fr .85fr;gap:clamp(50px,10vw,150px);align-items:start}.rates-options h2{margin-bottom:25px}.rates-options p:not(.eyebrow){max-width:600px;color:#596b60}.option-list{border-top:1px solid #a9baad}.option-list>div{display:flex;justify-content:space-between;gap:25px;padding:25px 0;border-bottom:1px solid #a9baad}.option-list strong{white-space:nowrap;color:#355f49}
+  .booking-steps{padding:clamp(90px,10vw,150px) 0;background:#fff}.booking-steps h2{margin-bottom:55px}.booking-steps__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.booking-steps article{border-top:1px solid #cbd9cf;padding:24px 10px 0 0}.booking-steps article>span{color:#355f49;font-weight:800}.booking-steps h3{margin:22px 0 12px;font-size:clamp(27px,2.3vw,38px)}.booking-steps article p{color:#596b60;font-size:14px}
+  @media(max-width:950px){.rates-hero__grid,.event-offer__grid,.rates-options__grid{grid-template-columns:1fr}.rates-trust{grid-template-columns:1fr 1fr}.booking-steps__grid{grid-template-columns:1fr 1fr}.rate-jump{top:109px}.rate-jump .wrap{justify-content:start;overflow:auto}.rate-jump a{white-space:nowrap}}
+  @media(max-width:560px){.rates-trust{grid-template-columns:1fr}.rates-trust span{border-right:0;border-bottom:1px solid #3a5343}.booking-steps__grid{grid-template-columns:1fr}.rate-jump{top:105px}.rate-jump .wrap{width:100%;padding:0 20px}.rates-hero__actions .button{width:100%}}
+</style>

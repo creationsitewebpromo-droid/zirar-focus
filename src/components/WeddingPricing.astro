@@ -1,28 +1,5 @@
 ---
-const offers = [
-  {
-    number: '01',
-    name: 'Cérémonie',
-    price: '1 730 €',
-    description: 'Les moments essentiels, jusqu’au cocktail.',
-    moments: ['Échange de préparation', 'Cérémonie & portraits', 'Cocktail & instants spontanés', 'Sélection, retouche et remise numérique'],
-  },
-  {
-    number: '02',
-    name: 'Journée',
-    price: '2 130 €',
-    description: 'Le récit de votre journée, des préparatifs au dîner.',
-    moments: ['Échange de préparation', 'Préparatifs, cérémonie & portraits', 'Cocktail & début de réception', 'Sélection, retouche et remise numérique'],
-    featured: true,
-  },
-  {
-    number: '03',
-    name: 'Signature',
-    price: '2 480 €',
-    description: 'Une présence prolongée jusque dans l’ambiance de la soirée.',
-    moments: ['Échange de préparation', 'Préparatifs & cérémonie', 'Réception & soirée', 'Sélection, retouche et remise numérique'],
-  },
-];
+import { weddingOffers as offers } from '../data/offers';
 ---
 
 <section class="pricing" id="tarifs" aria-labelledby="pricing-title">
@@ -32,16 +9,16 @@ const offers = [
         <p class="eyebrow">Les tarifs · Mariage à Avignon</p>
         <h2 id="pricing-title">Des images fortes.<br /><em>Un cadre clair.</em></h2>
       </div>
-      <p>Trois points de départ pour votre reportage <strong>photo</strong>. La durée exacte, le lieu, les déplacements et les livrables sont précisés dans votre devis avant réservation.</p>
+      <p>Trois formules de reportage <strong>photo</strong>, avec les images retouchées et livrées dans une galerie privée. Le lieu et les éventuels déplacements sont précisés dans le devis.</p>
     </div>
     <div class="pricing__grid">
-      {offers.map((offer) => (
+      {offers.map((offer, index) => (
         <article class:list={['pricing-card', { 'pricing-card--featured': offer.featured }]}>
-          <div class="pricing-card__top"><span>{offer.number} / 03</span>{offer.featured && <span>Un récit complet</span>}</div>
+          <div class="pricing-card__top"><span>{String(index + 1).padStart(2, '0')} / 03</span>{offer.featured && <span>Un récit complet</span>}</div>
           <h3>{offer.name}</h3>
           <p class="pricing-card__description">{offer.description}</p>
-          <p class="pricing-card__price"><span>À partir de</span><strong>{offer.price}</strong></p>
-          <ul>{offer.moments.map((moment) => <li>{moment}</li>)}</ul>
+          <p class="pricing-card__price"><span>Forfait photo</span><strong>{offer.priceLabel}</strong></p>
+          <ul>{offer.details.map((detail) => <li>{detail}</li>)}</ul>
           <a href={`/contact/?offre=${encodeURIComponent(`Mariage — ${offer.name}`)}#devis`} class="pricing-card__link">Demander un devis <span aria-hidden="true">↗</span></a>
         </article>
       ))}
