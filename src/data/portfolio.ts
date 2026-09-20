@@ -59,8 +59,8 @@ export const portfolio: PortfolioItem[] = [
     alt: 'Danseuses en mouvement sous des lumières roses et orangées',
     href: 'https://www.instagram.com/zirar_focus/p/DcGNV4ZjLoI/',
     format: 'landscape',
-    width: 640,
-    height: 427,
+    width: 2585,
+    height: 1723,
   },
   {
     title: 'Le geste documentaire',
@@ -89,8 +89,8 @@ export const portfolio: PortfolioItem[] = [
     alt: 'Ensemble de danseurs vêtus de bleu sur une scène',
     href: 'https://www.instagram.com/zirar_focus/p/DXh3sWljKs8/',
     format: 'landscape',
-    width: 640,
-    height: 426,
+    width: 1440,
+    height: 959,
   },
   {
     title: 'Traces',
@@ -109,8 +109,8 @@ export const portfolio: PortfolioItem[] = [
     alt: 'Groupe de danseuses en blanc portant une interprète sur scène',
     href: 'https://www.instagram.com/zirar_focus/p/DUlJaoVDP_Y/',
     format: 'landscape',
-    width: 640,
-    height: 449,
+    width: 1440,
+    height: 1010,
   },
   {
     title: 'Présence',
@@ -119,7 +119,7 @@ export const portfolio: PortfolioItem[] = [
     alt: 'Portrait en noir et blanc d’un homme âgé en costume',
     href: 'https://www.instagram.com/zirar_focus/p/DVqmevJjK4P/',
     format: 'portrait',
-    width: 480,
-    height: 640,
+    width: 1440,
+    height: 1920,
   },
 ];

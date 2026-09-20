@@ -13,7 +13,7 @@ const escapeXml = (value: string) => value
 export const GET: APIRoute = ({ site }) => {
   const base = site ?? new URL('https://zirar-focus.fr');
   const galleryUrl = new URL('/galerie/', base).toString();
-  const imageEntries = portfolio.map((item) => `
+  const imageEntries = portfolio.filter((item) => item.width >= 1200).map((item) => `
     <image:image>
       <image:loc>${escapeXml(new URL(item.src, base).toString())}</image:loc>
       <image:title>${escapeXml(item.title)}</image:title>

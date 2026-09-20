@@ -19,20 +19,21 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 
 ## Contenu et conversion
 
-- Les photos et la vidéo viennent des publications publiques de `@zirar_focus`. La vidéo 720p est chargée uniquement lorsque le visiteur la lance ; le Reel original reste lié pour la bande-son et la source.
-- Netlify Forms détecte le formulaire `contact`. Aucune soumission n’était présente et aucune notification e-mail n’était configurée lors du contrôle.
-- Il manque encore une adresse e-mail professionnelle confirmée pour la notification, ainsi qu’un téléphone, une adresse postale privée pour la validation Google et les tarifs propres à Zirar Focus. La zone de service Avignon a été saisie dans le profil, sans validation Google à ce stade.
+- Les photos et la vidéo viennent des publications publiques de `@zirar_focus`. Quatre photos haute définition sont affichées dans les pages de conversion et la galerie. La vidéo 720p est chargée uniquement lorsque le visiteur la lance ; le Reel original reste lié pour la bande-son et la source.
+- Netlify Forms détecte le formulaire `contact`. Une notification e-mail est active pour chaque nouvelle soumission, vers l’adresse du responsable saisie dans le tableau de bord Netlify et non inscrite dans le dépôt.
+- Le téléphone confirmé `+33 6 41 18 97 56` est publié. Les tarifs photo demandés par le propriétaire sont affichés comme points de départ : mariage à **1 730 €, 2 130 € et 2 480 €**, événementiel court à **330 €** ; les durées, déplacements et livrables exacts sont confirmés par devis. Le film reste sur devis.
+- Il manque encore une adresse postale privée pour la validation Google. La zone de service Avignon a été saisie dans le profil, sans validation Google à ce stade.
 - Ne pas publier de faux prix, de faux avis ou une adresse récupérée depuis un compte technique.
 
 ## Recherche de demande
 
 - Google Keyword Planner observait une fourchette moyenne de 10 à 100 recherches mensuelles pour « photographe mariage Avignon » et « photographe événementiel Avignon » ; la concurrence annoncée concernait Google Ads, pas la difficulté SEO.
 - Les expressions locales exactes testées dans Google Trends étaient trop faibles pour une conclusion fiable.
-- Exemple de tarifs publics locaux vérifié le 20 septembre 2026 : [Guillaume Samama](https://photo-avignon.com/mariages/) affiche trois forfaits photo mariage à **1 500 €, 2 000 € et 2 500 €** selon la couverture. Les scénarios purement arithmétiques à −20 € seraient 1 480 €, 1 980 € et 2 480 € pour des prestations identiques ; aucun de ces montants n'est un tarif Zirar Focus. La position Google d'un concurrent varie selon la requête, l'appareil et la localisation.
+- Source d’inspiration tarifaire demandée par le propriétaire et vérifiée le 20 septembre 2026 : [Frédéric Sicard](https://www.frederic-sicard.fr/photographe-avignon-tarifs) affiche trois forfaits photo mariage à **1 750 €, 2 150 € et 2 500 €**. Les points de départ Zirar Focus publiés sont inférieurs de 20 € à ces montants. La comparaison reste indicative car les livrables exacts doivent être confirmés dans chaque devis.
+- Pour l’événementiel, [Captation Production](https://www.captation-production.fr/photographe-avignon-forfaits-photos) affiche publiquement un forfait de 2 h 30 à **350 €** ; le point de départ Zirar Focus demandé est **330 €** pour une durée de référence identique, avec périmètre final au devis.
 - Les estimations tierces restent des pistes. Search Console et les demandes reçues deviennent les mesures propriétaires dès que le volume le permet.
 
 ## Actions externes encore dépendantes du propriétaire
 
-- Finaliser et faire vérifier la fiche Google Business Profile avec une adresse postale réelle fournie par le propriétaire (Google indique qu'elle ne sera pas visible publiquement dans ce flux). Confirmer les services réellement proposés avant de les cocher et fournir un téléphone professionnel si la fiche doit afficher les appels.
-- Configurer la notification Netlify vers l’adresse professionnelle confirmée.
-- Ajouter des reportages de mariage haute définition avec autorisation de publication et les vrais livrables ou tarifs.
+- Finaliser et faire vérifier la fiche Google Business Profile avec une adresse postale réelle fournie par le propriétaire (Google indique qu'elle ne sera pas visible publiquement dans ce flux). Confirmer les services réellement proposés avant de les cocher et ajouter le téléphone confirmé si la fiche doit afficher les appels.
+- Ajouter des reportages de mariage haute définition avec autorisation de publication et préciser les livrables définitifs de chaque formule.

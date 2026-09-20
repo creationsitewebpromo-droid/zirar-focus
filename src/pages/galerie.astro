@@ -4,7 +4,7 @@ import PortfolioGrid from '../components/PortfolioGrid.astro';
 import { portfolio } from '../data/portfolio';
 
 const reelUrl = 'https://www.instagram.com/zirar_focus/reel/Db0Kf20MBbM/';
-const galleryItems = portfolio.filter((item) => !item.reel);
+const galleryItems = portfolio.filter((item) => item.width >= 1200);
 const videoSchema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -36,7 +36,7 @@ const videoSchema = {
       </div>
       <div class="gallery-hero__aside">
         <p>Une sélection de reportages événementiels, de spectacles et de portraits réalisés par Zirar Focus.</p>
-        <p>Chaque image ouvre la publication originale sur Instagram.</p>
+        <p>Quatre photographies en haute définition, reliées à leurs publications originales.</p>
         <span>Avignon · France · Maroc · International</span>
       </div>
     </div>
@@ -79,7 +79,7 @@ const videoSchema = {
     <div class="wrap gallery-note__grid">
       <p class="eyebrow">Mariages & histoires privées</p>
       <h2>Votre histoire ne ressemblera<br /><em>à aucune autre.</em></h2>
-      <div><p>Pour découvrir une galerie de mariage complète et imaginer votre reportage, présentez votre date, votre lieu et l’atmosphère de votre journée.</p><a class="button dark" href="/contact/">Recevoir le portfolio mariage <span class="arrow" aria-hidden="true">↗</span></a></div>
+      <div><p>Présentez votre date, votre lieu et l’atmosphère de votre journée : nous imaginerons ensemble le reportage qui vous ressemble.</p><a class="button dark" href="/contact/">Parler de votre mariage <span class="arrow" aria-hidden="true">↗</span></a></div>
     </div>
   </section>
 

@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Contact & devis photographe Avignon | Zirar Focus" description="Contactez Zirar Focus pour votre mariage ou événement à Avignon, en Provence, en France ou au Maroc. Décrivez votre projet pour recevoir un devis personnalisé.">
   <div class="wrap contact-grid">
-    <div><p class="eyebrow">Contact · Devis personnalisé</p><h1>Racontez-moi <em>votre projet.</em></h1><p class="lead">Une date, un lieu, une idée, une envie : partagez ce que vous imaginez. Chaque demande reçoit une réponse adaptée à votre projet.</p><div class="contact-aside"><p><strong>Basé à Avignon</strong><br/>Déplacements en Provence, France, Maroc et à l’international.</p><p>Vous pouvez aussi découvrir les réalisations sur <a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>.</p></div></div>
-    <form class="contact-form" name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+    <div><p class="eyebrow">Contact · Devis personnalisé</p><h1>Racontez-moi <em>votre projet.</em></h1><p class="lead">Une date, un lieu, une idée, une envie : partagez ce que vous imaginez. Chaque demande reçoit une réponse adaptée à votre projet.</p><div class="contact-aside"><p><strong>Parlons de votre date</strong><br/><a href="tel:+33641189756">+33 6 41 18 97 56</a></p><p><strong>Basé à Avignon</strong><br/>Déplacements en Provence, France, Maroc et à l’international.</p><p>Vous pouvez aussi découvrir les réalisations sur <a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>.</p></div></div>
+    <form class="contact-form" id="devis" name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact" />
       <p hidden><label>Ne pas remplir ce champ <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
       <h2>Parlons-en.</h2><p>Les champs marqués * sont obligatoires.</p>
@@ -14,8 +14,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="form-field"><label for="telephone">Votre téléphone</label><input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" /></div>
         <div class="form-field"><label for="type">Votre projet *</label><select id="type" name="type-de-projet" required><option value="" disabled selected>Choisir une prestation</option><option value="Mariage">Mariage</option><option value="Événement">Événement</option><option value="Autre projet">Autre projet</option></select></div>
         <div class="form-field"><label for="format">Format souhaité *</label><select id="format" name="format-souhaite" required><option value="" disabled selected>Photo, film ou les deux ?</option><option value="Photo">Photo</option><option value="Film">Film</option><option value="Photo et film">Photo + film</option><option value="À définir">À définir ensemble</option></select></div>
+        <div class="form-field"><label for="offre">Offre envisagée</label><select id="offre" name="offre-envisagee"><option value="">À définir ensemble</option><option value="Mariage — Cérémonie">Mariage — Cérémonie</option><option value="Mariage — Journée">Mariage — Journée</option><option value="Mariage — Signature">Mariage — Signature</option><option value="Événement">Événement</option><option value="Film ou photo + film">Film ou photo + film</option></select></div>
         <div class="form-field"><label for="date">Date envisagée</label><input id="date" name="date" type="date" /></div>
         <div class="form-field full"><label for="lieu">Lieu envisagé</label><input id="lieu" name="lieu" placeholder="Avignon, Provence, Maroc…" maxlength="200" /></div>
+        <div class="form-field full"><label for="budget">Budget envisagé (facultatif)</label><input id="budget" name="budget-envisage" inputmode="numeric" placeholder="Ex. 2 000 €" maxlength="50" /></div>
         <div class="form-field full"><label for="message">Parlez-moi de votre projet *</label><textarea id="message" name="message" required minlength="20" maxlength="5000" placeholder="Le déroulé, l’ambiance, vos envies photo ou film…"></textarea></div>
       </div>
       <label class="form-check"><input type="checkbox" name="accord-confidentialite" value="oui" required /><span>J’accepte que mes informations soient utilisées pour répondre à ma demande, selon la <a href="/confidentialite/">politique de confidentialité</a>. *</span></label>
@@ -23,3 +25,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </form>
   </div>
 </BaseLayout>
+<script>
+  const requestedOffer = new URLSearchParams(window.location.search).get('offre');
+  const offerSelect = document.querySelector<HTMLSelectElement>('#offre');
+  const projectSelect = document.querySelector<HTMLSelectElement>('#type');
+  const formatSelect = document.querySelector<HTMLSelectElement>('#format');
+  if (requestedOffer && offerSelect && [...offerSelect.options].some((option) => option.value === requestedOffer)) {
+    offerSelect.value = requestedOffer;
+    if (projectSelect) projectSelect.value = requestedOffer.startsWith('Mariage') ? 'Mariage' : requestedOffer === 'Événement' ? 'Événement' : 'Autre projet';
+    if (formatSelect) formatSelect.value = requestedOffer.includes('Film') ? 'À définir' : 'Photo';
+  }
+</script>

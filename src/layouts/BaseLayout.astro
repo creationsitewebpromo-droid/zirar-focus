@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import dmSansUrl from '../assets/fonts/dm-sans-latin.woff2?url';
-import italianaUrl from '../assets/fonts/italiana-latin.woff2?url';
 
 interface Props {
   title: string;
@@ -29,6 +28,7 @@ const organization = {
   '@id': new URL('/#studio', Astro.site).toString(),
   name: 'Zirar Focus',
   url: new URL('/', Astro.site).toString(),
+  telephone: '+33 6 41 18 97 56',
   description: 'Photographe et vidéaste de mariage et d’événement basé à Avignon, disponible en France, au Maroc et à l’international.',
   image: ogImage,
   logo: {
@@ -79,13 +79,12 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#25251f" />
+    <meta name="theme-color" content="#111b17" />
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="GmYJacDjcgqtOqrVOTzsYxavrHkDw1qB4s-SPWYoUyg" />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href={dmSansUrl} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={italianaUrl} as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
@@ -101,15 +100,22 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
   <body>
     <a class="skip-link" href="#contenu">Aller au contenu</a>
     <header class="site-header">
+      <div class="header-meta">
+        <div class="wrap header-meta__inner">
+          <span>Photographe & vidéaste à Avignon · France · Maroc</span>
+          <div><a href="tel:+33641189756">+33 6 41 18 97 56</a><span aria-hidden="true">/</span><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+        </div>
+      </div>
       <div class="header-inner wrap">
         <a href="/" class="brand" aria-label="Zirar Focus, accueil">
-          <img class="brand-mark" src="/logo-mark.svg" alt="" width="42" height="42" />
+          <img class="brand-mark" src="/images/logo-instagram.jpg" alt="" width="150" height="150" />
           <span class="brand-wordmark">ZIRAR <span>FOCUS</span></span>
         </a>
         <nav class="desktop-nav" aria-label="Navigation principale">
           <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
           <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
           <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
+          <a href="/photographe-mariage-avignon/#tarifs">Tarifs</a>
           <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
           <a href="/contact/" class="nav-cta">Parlons de votre projet <span aria-hidden="true">↗</span></a>
         </nav>
@@ -119,8 +125,10 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
             <a href="/photographe-mariage-avignon/" aria-current={pathname.startsWith('/photographe-mariage') ? 'page' : undefined}>Mariage</a>
             <a href="/photographe-evenement-avignon/" aria-current={pathname.startsWith('/photographe-evenement') ? 'page' : undefined}>Événements</a>
             <a href="/galerie/" aria-current={pathname === '/galerie/' ? 'page' : undefined}>Portfolio</a>
+            <a href="/photographe-mariage-avignon/#tarifs">Tarifs</a>
             <a href="/a-propos/" aria-current={pathname === '/a-propos/' ? 'page' : undefined}>Le studio</a>
             <a href="/contact/" aria-current={pathname === '/contact/' ? 'page' : undefined}>Contact</a>
+            <a href="tel:+33641189756">+33 6 41 18 97 56</a>
           </nav>
         </details>
       </div>
@@ -134,8 +142,8 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
           <p>Des instants vrais, racontés avec sensibilité.</p>
         </div>
         <div class="footer-links">
-          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/galerie/">Portfolio</a><a href="/a-propos/">Le studio</a></div>
-          <div><span>Échanger</span><a href="/contact/">Demander un devis</a><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
+          <div><span>Explorer</span><a href="/photographe-mariage-avignon/">Mariages</a><a href="/photographe-evenement-avignon/">Événements</a><a href="/galerie/">Portfolio</a><a href="/photographe-mariage-avignon/#tarifs">Tarifs</a><a href="/a-propos/">Le studio</a></div>
+          <div><span>Échanger</span><a href="/contact/">Demander un devis</a><a href="tel:+33641189756">+33 6 41 18 97 56</a><a href="https://www.instagram.com/zirar_focus/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div>
         </div>
       </div>
       <div class="wrap footer-bottom"><span>© {new Date().getFullYear()} Zirar Focus</span><span>Avignon · France · Maroc · International</span><a href="/confidentialite/">Confidentialité</a></div>
