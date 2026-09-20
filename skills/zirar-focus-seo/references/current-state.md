@@ -28,6 +28,7 @@ Dernière mise à jour : **20 septembre 2026**. Toute campagne ultérieure comme
 
 - Google Keyword Planner observait une fourchette moyenne de 10 à 100 recherches mensuelles pour « photographe mariage Avignon » et « photographe événementiel Avignon » ; la concurrence annoncée concernait Google Ads, pas la difficulté SEO.
 - Les expressions locales exactes testées dans Google Trends étaient trop faibles pour une conclusion fiable.
+- Exemple de tarifs publics locaux vérifié le 20 septembre 2026 : [Guillaume Samama](https://photo-avignon.com/mariages/) affiche trois forfaits photo mariage à **1 500 €, 2 000 € et 2 500 €** selon la couverture. Les scénarios purement arithmétiques à −20 € seraient 1 480 €, 1 980 € et 2 480 € pour des prestations identiques ; aucun de ces montants n'est un tarif Zirar Focus. La position Google d'un concurrent varie selon la requête, l'appareil et la localisation.
 - Les estimations tierces restent des pistes. Search Console et les demandes reçues deviennent les mesures propriétaires dès que le volume le permet.
 
 ## Actions externes encore dépendantes du propriétaire

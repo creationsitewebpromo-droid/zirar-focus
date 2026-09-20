@@ -13,6 +13,10 @@ L'objectif « premier sur Google » se traduit en visibilité et demandes qualif
 
 L’état daté des accès, du domaine, de Search Console, des médias et des mesures se trouve dans [references/current-state.md](references/current-state.md). Le relire et le mettre à jour avec des preuves avant chaque campagne. Dépôt du projet : <https://github.com/creationsitewebpromo-droid/zirar-focus>.
 
+## Skills existants examinés
+
+Le dépôt [seranking/seo-skills](https://github.com/seranking/seo-skills) fournit des modules généraux utiles, notamment [seo-local](https://github.com/seranking/seo-skills/blob/main/skills/seo-local/SKILL.md) pour la visibilité locale et une [extension Google](https://github.com/seranking/seo-skills/blob/main/extensions/google/README.md) pour Search Console, PageSpeed et Keyword Planner. Ce skill reste propre à Zirar Focus : il relie ces démarches aux pages Astro, au domaine Hostinger, à Netlify, au portfolio réel et aux observations datées du projet. Vérifier les prérequis et les permissions avant d'utiliser un module externe.
+
 ## Entrées et ordre de travail
 
 1. Repérer le projet Astro, le domaine de production, les accès réellement disponibles et l'état de Search Console et du Business Profile. Un site nouveau peut ne disposer d'aucune donnée GSC : consigner cette absence comme référence de départ, jamais comme un score nul.
