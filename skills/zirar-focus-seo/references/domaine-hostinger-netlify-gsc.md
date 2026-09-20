@@ -67,7 +67,7 @@ Source : [redirections par domaine Netlify](https://docs.netlify.com/manage/rout
 
 ## 6. Migrer Google Search Console
 
-L'état relevé le 20 septembre 2026 indiquait qu'aucune propriété du projet n'était présente dans le compte Search Console consulté. Revérifier avant d'agir.
+Au début de la configuration du 20 septembre 2026, aucune propriété du projet n'était présente dans le compte Search Console consulté. La propriété Domaine `zirar-focus.fr` a ensuite été validée et le sitemap soumis ; l’état actuel daté est conservé dans [current-state.md](current-state.md). Revérifier l’interface avant d’agir.
 
 ### Si `netlify.app` a été public ou indexé
 

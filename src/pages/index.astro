@@ -2,17 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PortfolioGrid from '../components/PortfolioGrid.astro';
 import { portfolio } from '../data/portfolio';
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': new URL('/#website', Astro.site).toString(),
+  name: 'Zirar Focus',
+  url: new URL('/', Astro.site).toString(),
+  inLanguage: 'fr-FR',
+  publisher: { '@id': new URL('/#studio', Astro.site).toString() },
+};
 ---
 
 <BaseLayout
-  title="Photographe mariage à Avignon & vidéaste | Zirar Focus"
-  description="Zirar Focus, photographe et vidéaste de mariage et d’événement à Avignon. Reportages sensibles en Provence, partout en France, au Maroc et à l’international."
+  title="Photographe & vidéaste à Avignon | Zirar Focus"
+  description="Zirar Focus réalise vos photos et films à Avignon : mariages, événements et portraits en Provence, en France, au Maroc et à l’international."
   path="/"
+  schema={websiteSchema}
 >
   <section class="hero-home" aria-labelledby="hero-title">
     <div class="hero-home__copy">
       <div class="hero-home__inner">
-        <p class="eyebrow eyebrow--light">Photographe & filmmaker · Avignon</p>
+        <p class="eyebrow eyebrow--light">Photographe & vidéaste · Avignon</p>
         <h1 id="hero-title">Les instants passent.<br /><em>Les images restent.</em></h1>
         <p class="hero-home__lead">Mariages, portraits et événements racontés avec un regard cinématographique, sensible et profondément humain.</p>
         <div class="hero-actions">

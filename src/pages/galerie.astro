@@ -2,11 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PortfolioGrid from '../components/PortfolioGrid.astro';
 import { portfolio } from '../data/portfolio';
+
+const reelUrl = 'https://www.instagram.com/zirar_focus/reel/Db0Kf20MBbM/';
+const galleryItems = portfolio.filter((item) => !item.reel);
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  '@id': new URL('/galerie/#video', Astro.site).toString(),
+  name: 'L’énergie de la scène — Zirar Focus',
+  description: 'Extrait filmé par Zirar Focus lors d’un concert, présenté dans le portfolio photo et film du studio à Avignon.',
+  thumbnailUrl: new URL('/images/portfolio/film-concert.jpg', Astro.site).toString(),
+  uploadDate: '2026-08-09',
+  duration: 'PT35S',
+  contentUrl: new URL('/videos/zirar-focus-reel-720p.mp4', Astro.site).toString(),
+  url: new URL('/galerie/', Astro.site).toString(),
+  sameAs: reelUrl,
+  mainEntityOfPage: new URL('/galerie/', Astro.site).toString(),
+  inLanguage: 'fr-FR',
+  publisher: { '@id': new URL('/#studio', Astro.site).toString() },
+};
 ---
 
 <BaseLayout
   title="Portfolio photo & film | Zirar Focus Avignon"
   description="Découvrez le portfolio de Zirar Focus : portraits, spectacles, reportages et films réalisés à Avignon, en France et au Maroc."
+  schema={videoSchema}
 >
   <section class="gallery-hero">
     <div class="wrap gallery-hero__grid">
@@ -22,9 +42,36 @@ import { portfolio } from '../data/portfolio';
     </div>
   </section>
 
+  <section class="film-feature" aria-labelledby="film-feature-title">
+    <div class="wrap film-feature__grid">
+      <div class="film-feature__copy">
+        <p class="eyebrow eyebrow--light">Film à la une · 00:35</p>
+        <h2 id="film-feature-title">L’énergie d’un instant,<br /><em>en mouvement.</em></h2>
+        <p>Un extrait authentique réalisé par Zirar Focus au cœur d’un concert. La version intégrée privilégie l’image ; découvrez le Reel original et sa bande-son sur Instagram.</p>
+        <a class="button button--gold" href={reelUrl} target="_blank" rel="noopener noreferrer">Voir le Reel original <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="film-feature__media">
+        <video
+          controls
+          muted
+          playsinline
+          preload="none"
+          poster="/images/portfolio/film-concert.jpg"
+          width="720"
+          height="1280"
+          aria-describedby="film-feature-caption"
+        >
+          <source src="/videos/zirar-focus-reel-720p.mp4" type="video/mp4" />
+          Votre navigateur ne peut pas lire cette vidéo. <a href={reelUrl}>Voir le Reel sur Instagram</a>.
+        </video>
+        <figcaption id="film-feature-caption"><span>Film · événement</span><span>Extrait vertical · Zirar Focus</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="gallery-page">
     <div class="wrap">
-      <PortfolioGrid items={portfolio} />
+      <PortfolioGrid items={galleryItems} />
     </div>
   </section>
 

@@ -21,6 +21,6 @@ Le formulaire de contact utilise Netlify Forms. Vérifier après publication que
 
 ## Contenu et SEO
 
-Les onze images de la galerie proviennent des publications publiques du compte [@zirar_focus](https://www.instagram.com/zirar_focus/) ; elles illustrent des événements, spectacles et portraits. La couverture du Reel renvoie vers la vidéo originale sur Instagram. Le logo SVG a été redessiné d’après le monogramme du profil. Ajouter des photos de mariages haute résolution et les coordonnées commerciales confirmées avant d’étendre le portfolio ou la fiche Google.
+Les visuels de la galerie proviennent des publications publiques du compte [@zirar_focus](https://www.instagram.com/zirar_focus/) ; ils illustrent des événements, spectacles et portraits. Un extrait visuel 720p du Reel est hébergé localement et chargé uniquement à la demande ; le lien vers la publication originale permet de retrouver sa bande-son et sa source. Le logo SVG a été redessiné d’après le monogramme du profil. Ajouter des photos de mariages haute résolution et les coordonnées commerciales confirmées avant d’étendre le portfolio ou la fiche Google.
 
 Le guide de travail SEO propre à ce projet est dans [`skills/zirar-focus-seo/SKILL.md`](skills/zirar-focus-seo/SKILL.md). Les prix, avis, résultats Google et classements ne doivent pas être inventés.

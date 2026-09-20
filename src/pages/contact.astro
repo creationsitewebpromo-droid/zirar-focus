@@ -11,7 +11,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="form-grid">
         <div class="form-field"><label for="nom">Votre nom *</label><input id="nom" name="nom" autocomplete="name" required maxlength="120" /></div>
         <div class="form-field"><label for="email">Votre e-mail *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200" /></div>
+        <div class="form-field"><label for="telephone">Votre téléphone</label><input id="telephone" name="telephone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" /></div>
         <div class="form-field"><label for="type">Votre projet *</label><select id="type" name="type-de-projet" required><option value="" disabled selected>Choisir une prestation</option><option value="Mariage">Mariage</option><option value="Événement">Événement</option><option value="Autre projet">Autre projet</option></select></div>
+        <div class="form-field"><label for="format">Format souhaité *</label><select id="format" name="format-souhaite" required><option value="" disabled selected>Photo, film ou les deux ?</option><option value="Photo">Photo</option><option value="Film">Film</option><option value="Photo et film">Photo + film</option><option value="À définir">À définir ensemble</option></select></div>
         <div class="form-field"><label for="date">Date envisagée</label><input id="date" name="date" type="date" /></div>
         <div class="form-field full"><label for="lieu">Lieu envisagé</label><input id="lieu" name="lieu" placeholder="Avignon, Provence, Maroc…" maxlength="200" /></div>
         <div class="form-field full"><label for="message">Parlez-moi de votre projet *</label><textarea id="message" name="message" required minlength="20" maxlength="5000" placeholder="Le déroulé, l’ambiance, vos envies photo ou film…"></textarea></div>

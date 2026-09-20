@@ -14,6 +14,7 @@ Chaque page doit répondre vite : prestation, lieu réel, style, exemples, déro
 - Redirections Netlify : une version canonique du domaine (www ou non), HTTPS et chemins déplacés en 301 sans boucle. Les previews et déploiements de branche ne doivent pas être indexables ; vérifier leurs réponses HTTP et en-têtes au lieu de supposer une configuration par défaut.
 - Images : fichiers originaux autorisés, formats adaptés, dimensions déclarées, `srcset`/tailles ou composant `Image`, chargement prioritaire de l'image principale, lazy loading des images hors écran, texte `alt` décrivant les scènes utiles. Prévoir des miniatures de galerie pour éviter de charger les originaux immédiatement.
 - Formulaire : fonctionnement réel, validation, anti-spam raisonnable, politique de confidentialité appropriée, suivi de demande qui n'expose pas les données des clients dans le dépôt.
+- Médias : pour un portfolio important, ajouter un sitemap image/vidéo au sitemap index, puis vérifier le XML généré et les URLs publiques. Un `VideoObject` doit décrire une vidéo visible sur la page avec miniature, nom, description, date et URL de contenu réelles.
 
 ## Données structurées
 
@@ -32,3 +33,5 @@ Pour un domaine dont la zone DNS reste chez Hostinger, suivre la procédure de [
 - [Netlify : en-têtes personnalisés](https://docs.netlify.com/manage/routing/headers/)
 - [Google Search Central : guide SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 - [Google : données structurées LocalBusiness](https://developers.google.com/search/docs/appearance/structured-data/local-business)
+- [Google : données structurées vidéo](https://developers.google.com/search/docs/appearance/structured-data/video)
+- [Google : sitemaps images](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps)

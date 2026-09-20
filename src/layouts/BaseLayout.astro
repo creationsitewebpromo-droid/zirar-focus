@@ -31,9 +31,19 @@ const organization = {
   url: new URL('/', Astro.site).toString(),
   description: 'Photographe et vidéaste de mariage et d’événement basé à Avignon, disponible en France, au Maroc et à l’international.',
   image: ogImage,
+  logo: {
+    '@type': 'ImageObject',
+    '@id': new URL('/#logo', Astro.site).toString(),
+    url: new URL('/images/logo-instagram.jpg', Astro.site).toString(),
+    contentUrl: new URL('/images/logo-instagram.jpg', Astro.site).toString(),
+    width: 150,
+    height: 150,
+  },
   sameAs: ['https://www.instagram.com/zirar_focus/'],
   areaServed: [
     { '@type': 'City', name: 'Avignon' },
+    { '@type': 'AdministrativeArea', name: 'Vaucluse' },
+    { '@type': 'AdministrativeArea', name: 'Provence' },
     { '@type': 'Country', name: 'France' },
     { '@type': 'Country', name: 'Maroc' },
   ],
@@ -41,9 +51,24 @@ const organization = {
     '@type': 'OfferCatalog',
     name: 'Prestations photo et film',
     itemListElement: [
-      { '@type': 'OfferCatalog', name: 'Photographie de mariage' },
-      { '@type': 'OfferCatalog', name: 'Film de mariage' },
-      { '@type': 'OfferCatalog', name: 'Photographie et film événementiels' },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': new URL('/photographe-mariage-avignon/#service', Astro.site).toString(),
+          name: 'Photographie et film de mariage',
+          url: new URL('/photographe-mariage-avignon/', Astro.site).toString(),
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': new URL('/photographe-evenement-avignon/#service', Astro.site).toString(),
+          name: 'Photographie et film événementiels',
+          url: new URL('/photographe-evenement-avignon/', Astro.site).toString(),
+        },
+      },
     ],
   },
 };
@@ -57,7 +82,7 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
     <meta name="theme-color" content="#25251f" />
     <meta name="description" content={description} />
     <meta name="google-site-verification" content="GmYJacDjcgqtOqrVOTzsYxavrHkDw1qB4s-SPWYoUyg" />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href={dmSansUrl} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={italianaUrl} as="font" type="font/woff2" crossorigin />
