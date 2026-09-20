@@ -20,6 +20,8 @@ const { items, compact = false } = Astro.props;
     >
       <img
         src={item.src}
+        srcset={item.src.endsWith('.webp') ? `${item.src.replace('.webp', '-800.webp')} 800w, ${item.src} ${item.width}w` : undefined}
+        sizes="(max-width: 560px) 100vw, (max-width: 950px) 50vw, 33vw"
         alt={item.alt}
         width={item.width}
         height={item.height}

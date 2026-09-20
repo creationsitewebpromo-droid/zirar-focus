@@ -55,12 +55,12 @@ export const portfolio: PortfolioItem[] = [
   {
     title: 'Mouvement',
     category: 'Danse · Création',
-    src: '/images/portfolio/danse-mouvement-couleur.jpg',
+    src: '/images/portfolio/danse-mouvement-couleur.webp',
     alt: 'Danseuses en mouvement sous des lumières roses et orangées',
     href: 'https://www.instagram.com/zirar_focus/p/DcGNV4ZjLoI/',
     format: 'landscape',
-    width: 2585,
-    height: 1723,
+    width: 1600,
+    height: 1066,
   },
   {
     title: 'Le geste documentaire',
@@ -85,7 +85,7 @@ export const portfolio: PortfolioItem[] = [
   {
     title: 'Corps en scène',
     category: 'Danse · Spectacle',
-    src: '/images/portfolio/danse-scene-bleu.jpg',
+    src: '/images/portfolio/danse-scene-bleu.webp',
     alt: 'Ensemble de danseurs vêtus de bleu sur une scène',
     href: 'https://www.instagram.com/zirar_focus/p/DXh3sWljKs8/',
     format: 'landscape',
@@ -105,7 +105,7 @@ export const portfolio: PortfolioItem[] = [
   {
     title: 'Élévation',
     category: 'Danse · Spectacle',
-    src: '/images/portfolio/danse-scene-blanc.jpg',
+    src: '/images/portfolio/danse-scene-blanc.webp',
     alt: 'Groupe de danseuses en blanc portant une interprète sur scène',
     href: 'https://www.instagram.com/zirar_focus/p/DUlJaoVDP_Y/',
     format: 'landscape',
@@ -115,7 +115,7 @@ export const portfolio: PortfolioItem[] = [
   {
     title: 'Présence',
     category: 'Portrait · Noir & blanc',
-    src: '/images/portfolio/portrait-homme-noir-blanc.jpg',
+    src: '/images/portfolio/portrait-homme-noir-blanc.webp',
     alt: 'Portrait en noir et blanc d’un homme âgé en costume',
     href: 'https://www.instagram.com/zirar_focus/p/DVqmevJjK4P/',
     format: 'portrait',

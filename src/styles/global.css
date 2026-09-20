@@ -207,12 +207,12 @@ em{font-weight:650;color:var(--gold);font-style:normal}
 .split-section h2{margin-bottom:29px}
 .split-section .prose{font-size:18px;line-height:1.84;color:#55554e}
 .prose p+p{margin-top:25px}
-.motif-panel{position:relative;min-height:610px;overflow:hidden;background:#18231c url('/images/portfolio/portrait-homme-noir-blanc.jpg') center 30%/cover no-repeat}
+.motif-panel{position:relative;min-height:610px;overflow:hidden;background:#18231c url('/images/portfolio/portrait-homme-noir-blanc.webp') center 30%/cover no-repeat}
 .motif-panel:before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,8,.6),transparent 55%),linear-gradient(90deg,rgba(10,10,8,.12),transparent)}
 .motif-panel:after{content:'L’essentiel est dans l’émotion';position:absolute;left:8%;right:8%;bottom:8%;padding-top:18px;border-top:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--serif);font-weight:650;font-size:clamp(30px,3.2vw,50px);line-height:1.1;letter-spacing:-.04em}
-.motif-panel.event{background-image:url('/images/portfolio/danse-scene-bleu.jpg')}
+.motif-panel.event{background-image:url('/images/portfolio/danse-scene-bleu.webp')}
 .motif-panel.event:after{content:'Chaque rencontre mérite un regard singulier'}
-.motif-panel.wedding{background-image:url('/images/illustration-mariage-pexels.jpg');background-position:center 38%}
+.motif-panel.wedding{background-image:url('/images/illustration-mariage-pexels.webp');background-position:center 38%}
 .motif-panel.wedding:after{content:'Votre histoire, ici et ailleurs'}
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:58px}
 .feature{border-top:1px solid var(--line);padding:24px 18px 0 0}
