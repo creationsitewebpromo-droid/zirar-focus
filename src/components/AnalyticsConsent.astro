@@ -1,0 +1,189 @@
+---
+interface Props {
+  measurementId?: string;
+}
+
+const { measurementId = '' } = Astro.props;
+---
+
+{measurementId && (
+  <>
+    <section
+      class="consent-panel"
+      id="analytics-consent"
+      data-measurement-id={measurementId}
+      role="region"
+      aria-labelledby="consent-title"
+      aria-describedby="consent-description"
+      hidden
+    >
+      <div>
+        <p class="consent-panel__eyebrow">Mesure d’audience</p>
+        <h2 id="consent-title">À vous de choisir.</h2>
+        <p id="consent-description">Avec votre accord, Google Analytics nous aide à comprendre quelles pages conduisent à une demande de devis. Le code du site ne transmet pas à Google le contenu des champs du formulaire, et votre refus ne limite aucune fonction.</p>
+        <a href="/confidentialite/">En savoir plus sur les cookies</a>
+      </div>
+      <div class="consent-panel__actions">
+        <button type="button" data-consent="denied">Tout refuser</button>
+        <button type="button" data-consent="granted">Tout accepter</button>
+      </div>
+    </section>
+    <button class="consent-settings" type="button" data-consent-settings hidden>Gérer mes cookies</button>
+
+    <script is:inline>
+      (() => {
+        const panel = document.querySelector('#analytics-consent');
+        const settingsButton = document.querySelector('[data-consent-settings]');
+        const measurementId = panel?.dataset.measurementId;
+        if (!panel || !settingsButton || !measurementId) return;
+
+        const storageKey = 'zirar-focus-analytics-consent-v1';
+        const sixMonths = 1000 * 60 * 60 * 24 * 183;
+        let currentChoice = 'unset';
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+        window.gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          wait_for_update: 500,
+        });
+        window.gtag('set', 'ads_data_redaction', true);
+
+        const readChoice = () => {
+          try {
+            const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+            if (!saved || !['granted', 'denied'].includes(saved.value) || Date.now() - saved.savedAt > sixMonths) return null;
+            return saved.value;
+          } catch {
+            return null;
+          }
+        };
+
+        const saveChoice = (value) => {
+          try { localStorage.setItem(storageKey, JSON.stringify({ value, savedAt: Date.now() })); } catch {}
+        };
+
+        const clearAnalyticsCookies = () => {
+          const domain = location.hostname === 'localhost' ? '' : location.hostname.replace(/^www\./, '');
+          document.cookie.split(';').forEach((cookie) => {
+            const name = cookie.split('=')[0]?.trim();
+            if (!name || (name !== '_ga' && !name.startsWith('_ga_'))) return;
+            document.cookie = `${name}=; Max-Age=0; path=/; SameSite=Lax`;
+            if (domain) {
+              document.cookie = `${name}=; Max-Age=0; path=/; domain=${domain}; SameSite=Lax`;
+              document.cookie = `${name}=; Max-Age=0; path=/; domain=.${domain}; SameSite=Lax`;
+            }
+          });
+        };
+
+        const loadAnalytics = () => {
+          if (document.querySelector('script[data-zirar-analytics]')) return;
+          const script = document.createElement('script');
+          script.async = true;
+          script.dataset.zirarAnalytics = 'true';
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+          document.head.appendChild(script);
+          window.gtag('js', new Date());
+          window.gtag('config', measurementId, {
+            anonymize_ip: true,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+            cookie_expires: 34128000,
+            cookie_update: false,
+          });
+        };
+
+        const sendLeadIfNeeded = () => {
+          if (currentChoice !== 'granted' || location.pathname !== '/merci/') return;
+          try {
+            const submittedAt = Number(sessionStorage.getItem('zirar-focus-form-submitted'));
+            sessionStorage.removeItem('zirar-focus-form-submitted');
+            if (!submittedAt || Date.now() - submittedAt > 1000 * 60 * 10) return;
+          } catch { return; }
+          window.gtag('event', 'generate_lead', { method: 'contact_form' });
+        };
+
+        const applyChoice = (value, persist = true, moveFocus = false) => {
+          const withdrawing = currentChoice === 'granted' && value === 'denied';
+          currentChoice = value;
+          if (persist) saveChoice(value);
+          if (withdrawing) {
+            clearAnalyticsCookies();
+            location.reload();
+            return;
+          }
+          window.gtag('consent', 'update', {
+            analytics_storage: value,
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+          });
+          panel.hidden = true;
+          settingsButton.hidden = false;
+          if (value === 'granted') {
+            loadAnalytics();
+            sendLeadIfNeeded();
+          }
+          if (moveFocus) settingsButton.focus();
+        };
+
+        const storedChoice = readChoice();
+        if (storedChoice) applyChoice(storedChoice, false);
+        else {
+          panel.hidden = false;
+          requestAnimationFrame(() => panel.querySelector('button')?.focus({ preventScroll: true }));
+        }
+
+        panel.querySelectorAll('[data-consent]').forEach((button) => {
+          button.addEventListener('click', () => applyChoice(button.dataset.consent, true, true));
+        });
+        settingsButton.addEventListener('click', () => {
+          panel.hidden = false;
+          settingsButton.hidden = true;
+          panel.querySelector('button')?.focus();
+        });
+
+        document.querySelector('#devis')?.addEventListener('submit', () => {
+          try { sessionStorage.setItem('zirar-focus-form-submitted', String(Date.now())); } catch {}
+        });
+
+        document.querySelector('#offre')?.addEventListener('change', (event) => {
+          if (currentChoice !== 'granted' || !(event.target instanceof HTMLSelectElement) || !event.target.value) return;
+          window.gtag('event', 'select_offer', { offer_name: event.target.value });
+        });
+
+        document.addEventListener('click', (event) => {
+          if (currentChoice !== 'granted' || !(event.target instanceof Element)) return;
+          const link = event.target.closest('a');
+          if (!link) return;
+          const href = link.getAttribute('href') || '';
+          if (href.startsWith('tel:')) window.gtag('event', 'click_phone');
+          if (link.hostname === 'www.instagram.com') window.gtag('event', 'outbound_instagram');
+          if (href.startsWith('/contact')) {
+            const targetUrl = new URL(link.href, location.origin);
+            const offer = targetUrl.searchParams.get('offre');
+            window.gtag('event', offer ? 'select_offer' : 'quote_cta_click', offer ? { offer_name: offer } : {});
+          }
+        });
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .consent-panel{position:fixed;z-index:120;right:22px;bottom:22px;display:grid;grid-template-columns:minmax(0,1fr) 185px;gap:32px;width:min(calc(100% - 44px),760px);padding:28px;border:1px solid #55715e;background:#0d1711;color:#f4f8f3;box-shadow:0 20px 65px rgba(0,0,0,.38)}
+  .consent-panel[hidden],.consent-settings[hidden]{display:none!important}
+  .consent-panel__eyebrow{margin:0 0 8px;color:#c5e8ce;font-size:9px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
+  .consent-panel h2{margin:0 0 10px;font-size:30px;letter-spacing:-.04em}
+  .consent-panel p:not(.consent-panel__eyebrow){margin:0;color:#c7d1c9;font-size:13px;line-height:1.65}
+  .consent-panel a{display:inline-block;margin-top:12px;border-bottom:1px solid #789584;color:#e7f3e9;font-size:11px}
+  .consent-panel__actions{display:grid;grid-template-rows:1fr 1fr;gap:10px}
+  .consent-panel button,.consent-settings{border:1px solid #c5e8ce;font:inherit;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+  .consent-panel button{min-height:51px;padding:12px;background:#c5e8ce;color:#111b17}
+  .consent-panel button:hover,.consent-panel button:focus-visible{background:#fff;color:#111b17}
+  .consent-settings{position:fixed;z-index:70;left:16px;bottom:16px;padding:10px 13px;background:#0d1711;color:#f4f8f3}
+  @media(max-width:650px){.consent-panel{left:12px;right:12px;bottom:76px;grid-template-columns:1fr;gap:20px;width:auto;padding:22px}.consent-panel h2{font-size:28px}.consent-panel__actions{grid-template-columns:1fr 1fr;grid-template-rows:auto}.consent-settings{bottom:76px;left:10px;padding:8px 10px;font-size:8px}}
+</style>

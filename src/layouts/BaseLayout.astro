@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import dmSansUrl from '../assets/fonts/dm-sans-latin.woff2?url';
+import AnalyticsConsent from '../components/AnalyticsConsent.astro';
 
 interface Props {
   title: string;
@@ -22,6 +23,7 @@ const {
 const canonical = new URL(path, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
 const pathname = Astro.url.pathname;
+const analyticsMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
 const organization = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'ProfessionalService'],
@@ -29,7 +31,6 @@ const organization = {
   name: 'Zirar Focus',
   url: new URL('/', Astro.site).toString(),
   telephone: '+33 6 41 18 97 56',
-  priceRange: '150 € à 2 500 €',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+33 6 41 18 97 56',
@@ -169,5 +170,6 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
       </div>
       <div class="wrap footer-bottom"><span>© {new Date().getFullYear()} Zirar Focus</span><span>Avignon · France · Maroc · International</span><a href="/confidentialite/">Confidentialité</a><a class="developer-credit" href="https://www.creationsitewebpro.com/" target="_blank" rel="noopener noreferrer">Développé par MT ↗</a></div>
     </footer>
+    <AnalyticsConsent measurementId={analyticsMeasurementId} />
   </body>
 </html>
