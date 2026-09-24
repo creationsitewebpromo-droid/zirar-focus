@@ -161,6 +161,7 @@ const { measurementId = '' } = Astro.props;
           if (!link) return;
           const href = link.getAttribute('href') || '';
           if (href.startsWith('tel:')) window.gtag('event', 'click_phone');
+          if (link.hostname === 'wa.me') window.gtag('event', 'click_whatsapp');
           if (link.hostname === 'www.instagram.com') window.gtag('event', 'outbound_instagram');
           if (href.startsWith('/contact')) {
             const targetUrl = new URL(link.href, location.origin);

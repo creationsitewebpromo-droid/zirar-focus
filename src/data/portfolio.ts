@@ -1,5 +1,8 @@
+export type PortfolioCollection = 'mariage' | 'evenement' | 'portrait' | 'voyage';
+
 export interface PortfolioItem {
   title: string;
+  collection: PortfolioCollection;
   category: string;
   src: string;
   alt: string;
@@ -12,7 +15,85 @@ export interface PortfolioItem {
 
 export const portfolio: PortfolioItem[] = [
   {
+    title: 'Danser au milieu du parc',
+    collection: 'mariage',
+    category: 'Mariage · Émotion',
+    src: '/images/mariage/couple-danse-parc-zirar-focus.webp',
+    alt: 'Deux mariés enlacés dansent au bord d’un bassin dans un parc arboré',
+    href: 'https://www.instagram.com/p/DURdWn4jOlD/',
+    format: 'landscape',
+    width: 1440,
+    height: 960,
+  },
+  {
+    title: 'Une histoire en quatre instants',
+    collection: 'mariage',
+    category: 'Mariage · Couple',
+    src: '/images/mariage/instants-mariage-collage-zirar-focus.webp',
+    alt: 'Montage de quatre instants de mariage : marié souriant, robe, étreinte et échange des alliances',
+    href: 'https://www.instagram.com/p/DQ5KwOXjLXD/',
+    format: 'portrait',
+    width: 1440,
+    height: 1920,
+  },
+  {
+    title: 'Le départ des mariés',
+    collection: 'mariage',
+    category: 'Mariage · Cortège',
+    src: '/images/mariage/voiture-maries-avignon-zirar-focus.webp',
+    alt: 'Mariés quittant la cérémonie à bord d’une Ford Mustang décapotable orange',
+    href: 'https://www.instagram.com/p/DNWb1xMsibj/',
+    format: 'landscape',
+    width: 1440,
+    height: 1343,
+  },
+  {
+    title: 'Oui, devant la mairie',
+    collection: 'mariage',
+    category: 'Mariage · Cérémonie',
+    src: '/images/mariage/maries-balcon-mairie-zirar-focus.webp',
+    alt: 'Mariés saluant depuis le balcon d’une mairie sous les drapeaux français et européen',
+    href: 'https://www.instagram.com/p/DNWb1xMsibj/?img_index=5',
+    format: 'landscape',
+    width: 1440,
+    height: 1343,
+  },
+  {
+    title: 'La complicité',
+    collection: 'mariage',
+    category: 'Mariage · Portrait',
+    src: '/images/mariage/couple-maries-complice-zirar-focus.webp',
+    alt: 'Gros plan d’une mariée souriante tandis que son époux l’embrasse sur la joue',
+    href: 'https://www.instagram.com/p/DNWbXJMsHjz/?img_index=2',
+    format: 'landscape',
+    width: 1440,
+    height: 964,
+  },
+  {
+    title: 'Un baiser avant la fête',
+    collection: 'mariage',
+    category: 'Mariage · Noir & blanc',
+    src: '/images/mariage/baiser-maries-noir-blanc-zirar-focus.webp',
+    alt: 'Marié embrassant le front de son épouse dans un portrait en noir et blanc',
+    href: 'https://www.instagram.com/p/Czy7qOUMwAl/',
+    format: 'landscape',
+    width: 1065,
+    height: 899,
+  },
+  {
+    title: 'La réception en fête',
+    collection: 'mariage',
+    category: 'Mariage · Réception',
+    src: '/images/mariage/reception-mariage-confettis-zirar-focus.webp',
+    alt: 'Couple de mariés devant leur pièce montée sous une pluie de pétales blancs',
+    href: 'https://www.instagram.com/p/Cz3u86hi_-X/?img_index=2',
+    format: 'landscape',
+    width: 1440,
+    height: 996,
+  },
+  {
     title: 'L’énergie de la scène',
+    collection: 'evenement',
     category: 'Film · Événement',
     src: '/images/portfolio/film-concert.jpg',
     alt: 'Cadreur sur une scène de concert éclairée en vert',
@@ -24,6 +105,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Portrait d’artiste',
+    collection: 'evenement',
     category: 'Portrait · Scène',
     src: '/images/portfolio/portrait-artiste.jpg',
     alt: 'Portrait expressif d’un artiste souriant sur scène',
@@ -34,6 +116,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Rencontre en coulisses',
+    collection: 'evenement',
     category: 'Reportage · Rencontre',
     src: '/images/portfolio/rencontre-coulisses.jpg',
     alt: 'Deux hommes se saluent lors d’un événement en noir et blanc',
@@ -44,6 +127,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Le mot juste',
+    collection: 'evenement',
     category: 'Reportage · Noir & blanc',
     src: '/images/portfolio/conversation-noir-blanc.jpg',
     alt: 'Deux hommes en costume échangent discrètement dans un intérieur',
@@ -54,6 +138,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Mouvement',
+    collection: 'evenement',
     category: 'Danse · Création',
     src: '/images/portfolio/danse-mouvement-couleur.webp',
     alt: 'Danseuses en mouvement sous des lumières roses et orangées',
@@ -64,6 +149,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Le geste documentaire',
+    collection: 'evenement',
     category: 'Détail · Noir & blanc',
     src: '/images/portfolio/geste-documentaire.jpg',
     alt: 'Gros plan en noir et blanc de mains tenant des billets',
@@ -74,6 +160,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Lumières de la ville',
+    collection: 'voyage',
     category: 'Voyage · Architecture',
     src: '/images/portfolio/architecture-nocturne.jpg',
     alt: 'Architecture éclairée de nuit vue à travers une forme métallique',
@@ -84,6 +171,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Corps en scène',
+    collection: 'evenement',
     category: 'Danse · Spectacle',
     src: '/images/portfolio/danse-scene-bleu.webp',
     alt: 'Ensemble de danseurs vêtus de bleu sur une scène',
@@ -94,6 +182,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Traces',
+    collection: 'evenement',
     category: 'Danse · Noir & blanc',
     src: '/images/portfolio/danse-mouvement-noir-blanc.jpg',
     alt: 'Surimpression en noir et blanc de danseurs en mouvement',
@@ -104,6 +193,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Élévation',
+    collection: 'evenement',
     category: 'Danse · Spectacle',
     src: '/images/portfolio/danse-scene-blanc.webp',
     alt: 'Groupe de danseuses en blanc portant une interprète sur scène',
@@ -114,6 +204,7 @@ export const portfolio: PortfolioItem[] = [
   },
   {
     title: 'Présence',
+    collection: 'portrait',
     category: 'Portrait · Noir & blanc',
     src: '/images/portfolio/portrait-homme-noir-blanc.webp',
     alt: 'Portrait en noir et blanc d’un homme âgé en costume',

@@ -13,19 +13,46 @@ const escapeXml = (value: string) => value
 export const GET: APIRoute = ({ site }) => {
   const base = site ?? new URL('https://zirar-focus.fr');
   const galleryUrl = new URL('/galerie/', base).toString();
-  const imageEntries = portfolio.filter((item) => item.width >= 1200).map((item) => `
+  const aboutUrl = new URL('/a-propos/', base).toString();
+  const weddingUrl = new URL('/photographe-mariage-avignon/', base).toString();
+  const eventUrl = new URL('/photographe-evenement-avignon/', base).toString();
+  const imageEntries = (items: typeof portfolio) => items.map((item) => `
     <image:image>
       <image:loc>${escapeXml(new URL(item.src, base).toString())}</image:loc>
       <image:title>${escapeXml(item.title)}</image:title>
       <image:caption>${escapeXml(item.alt)}</image:caption>
     </image:image>`).join('');
+  const weddingImages = portfolio.filter((item) => item.collection === 'mariage');
+  const eventImages = portfolio.filter((item) => item.collection === 'evenement' && item.width >= 1200);
+  const galleryImages = portfolio.filter((item) => !['mariage', 'evenement'].includes(item.collection) && item.width >= 1200);
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>${escapeXml(galleryUrl)}</loc>${imageEntries}
+    <loc>${escapeXml(weddingUrl)}</loc>${imageEntries(weddingImages)}
+  </url>
+  <url>
+    <loc>${escapeXml(eventUrl)}</loc>${imageEntries(eventImages)}
+  </url>
+  <url>
+    <loc>${escapeXml(aboutUrl)}</loc>
+    <video:video>
+      <video:thumbnail_loc>${escapeXml(new URL('/images/zirar/zirar-reel-camera-poster.webp', base).toString())}</video:thumbnail_loc>
+      <video:title>Zirar derrière l’objectif — Zirar Focus</video:title>
+      <video:description>Un Reel vertical qui présente Zirar, photographe et vidéaste, avec son appareil photo.</video:description>
+      <video:content_loc>${escapeXml(new URL('/videos/zirar-a-propos-reel-720p.mp4', base).toString())}</video:content_loc>
+      <video:duration>9</video:duration>
+      <video:publication_date>2026-06-21T22:31:45Z</video:publication_date>
+      <video:uploader info="${escapeXml(new URL('/a-propos/', base).toString())}">Zirar Focus</video:uploader>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+    </video:video>
+  </url>
+  <url>
+    <loc>${escapeXml(galleryUrl)}</loc>${imageEntries(galleryImages)}
     <video:video>
       <video:thumbnail_loc>${escapeXml(new URL('/images/portfolio/film-concert.jpg', base).toString())}</video:thumbnail_loc>
       <video:title>L’énergie de la scène — Zirar Focus</video:title>

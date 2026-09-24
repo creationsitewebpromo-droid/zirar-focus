@@ -231,7 +231,7 @@ em{font-weight:650;color:var(--gold);font-style:normal}
 .motif-panel:after{content:'L’essentiel est dans l’émotion';position:absolute;left:8%;right:8%;bottom:8%;padding-top:18px;border-top:1px solid rgba(255,255,255,.4);color:#fff;font-family:var(--serif);font-weight:650;font-size:clamp(30px,3.2vw,50px);line-height:1.1;letter-spacing:-.04em}
 .motif-panel.event{background-image:url('/images/portfolio/danse-scene-bleu.webp')}
 .motif-panel.event:after{content:'Chaque rencontre mérite un regard singulier'}
-.motif-panel.wedding{background-image:url('/images/illustration-mariage-pexels.webp');background-position:center 38%}
+.motif-panel.wedding{background-image:url('/images/mariage/voiture-maries-avignon-zirar-focus.webp');background-position:center 55%}
 .motif-panel.wedding:after{content:'Votre histoire, ici et ailleurs'}
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;margin-top:58px}
 .feature{border-top:1px solid var(--line);padding:24px 18px 0 0}
@@ -360,8 +360,9 @@ em{font-weight:650;color:var(--gold);font-style:normal}
   .film-feature__media{padding:7px}.film-feature__media figcaption{flex-direction:column;gap:3px}.film-feature__copy>p:not(.eyebrow){font-size:15px}
   .home-offers__head{gap:27px}.home-offers__head>div:last-child>p{font-size:15px}.home-offer-card{padding:28px 23px}.home-offers__reassurance{justify-content:flex-start;flex-direction:column;gap:8px}
   .form-grid{grid-template-columns:1fr}.contact-form{padding:30px 20px}.footer-links{grid-template-columns:1fr;gap:35px}.footer-brand{font-size:55px}.footer-bottom{gap:13px}.footer-bottom>*{width:100%}
-  .mobile-conversion-bar{position:fixed;z-index:90;left:0;right:0;bottom:0;display:grid;grid-template-columns:.8fr 1.2fr;min-height:64px;background:#0d1711;color:#fff;border-top:1px solid #4f6756;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+  .mobile-conversion-bar{position:fixed;z-index:90;left:0;right:0;bottom:0;display:grid;grid-template-columns:.72fr .88fr 1.4fr;min-height:64px;background:#0d1711;color:#fff;border-top:1px solid #4f6756;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
   .mobile-conversion-bar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 14px;font-size:10px;font-weight:800;letter-spacing:.1em;text-align:center;text-transform:uppercase}
+  .mobile-conversion-bar .mobile-whatsapp{background:#1d5138;color:#fff}
   .mobile-conversion-bar a:last-child{background:var(--gold-bright);color:var(--ink)}
 }
 

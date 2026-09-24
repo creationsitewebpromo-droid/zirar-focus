@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import dmSansUrl from '../assets/fonts/dm-sans-latin.woff2?url';
 import AnalyticsConsent from '../components/AnalyticsConsent.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { whatsappUrl } from '../data/contact';
 
 interface Props {
   title: string;
@@ -152,8 +154,10 @@ const jsonLd = [organization, ...(schema ? (Array.isArray(schema) ? schema : [sc
       </div>
     </header>
     <main id="contenu"><slot /></main>
+    <WhatsAppButton />
     <nav class="mobile-conversion-bar" aria-label="Actions rapides">
       <a href="tel:+33641189756"><span aria-hidden="true">☎</span> Appeler</a>
+      <a class="mobile-whatsapp" href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp</a>
       <a href="/contact/#devis">Demander un devis <span aria-hidden="true">↗</span></a>
     </nav>
     <footer class="site-footer">

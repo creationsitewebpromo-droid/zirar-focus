@@ -4,7 +4,7 @@ import PortfolioGrid from '../components/PortfolioGrid.astro';
 import { portfolio } from '../data/portfolio';
 
 const reelUrl = 'https://www.instagram.com/zirar_focus/reel/Db0Kf20MBbM/';
-const galleryItems = portfolio.filter((item) => item.width >= 1200);
+const galleryItems = portfolio.filter((item) => item.collection === 'mariage' || item.width >= 1200);
 const videoSchema = {
   '@context': 'https://schema.org',
   '@type': 'VideoObject',
@@ -25,7 +25,7 @@ const videoSchema = {
 
 <BaseLayout
   title="Portfolio photo & film | Zirar Focus Avignon"
-  description="Découvrez le portfolio de Zirar Focus : portraits, spectacles, reportages et films réalisés à Avignon, en France et au Maroc."
+  description="Découvrez le portfolio de Zirar Focus : mariages, portraits, spectacles, reportages et films réalisés à Avignon, en France et au Maroc."
   schema={videoSchema}
 >
   <section class="gallery-hero">
@@ -35,8 +35,8 @@ const videoSchema = {
         <h1>Le mouvement.<br />La lumière.<br /><em>Les visages.</em></h1>
       </div>
       <div class="gallery-hero__aside">
-        <p>Une sélection de reportages événementiels, de spectacles et de portraits réalisés par Zirar Focus.</p>
-        <p>Quatre photographies en haute définition, reliées à leurs publications originales.</p>
+        <p>Une sélection de mariages, de reportages événementiels, de spectacles et de portraits réalisés par Zirar Focus.</p>
+        <p>{galleryItems.length} photographies en haute définition, reliées à leurs publications originales.</p>
         <span>Avignon · France · Maroc · International</span>
       </div>
     </div>

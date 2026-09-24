@@ -12,13 +12,14 @@ const websiteSchema = {
   inLanguage: 'fr-FR',
   publisher: { '@id': new URL('/#studio', Astro.site).toString() },
 };
-const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
+const weddingPortfolio = portfolio.filter((item) => item.collection === 'mariage');
 ---
 
 <BaseLayout
   title="Photographe & vidéaste à Avignon | Zirar Focus"
   description="Zirar Focus réalise vos photos et films à Avignon : mariages, événements et portraits en Provence, en France, au Maroc et à l’international."
   path="/"
+  image="/images/mariage/couple-danse-parc-zirar-focus.webp"
   schema={websiteSchema}
 >
   <section class="hero-home" aria-labelledby="hero-title">
@@ -42,16 +43,16 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
 
     <div class="hero-collage" aria-label="Sélection de photographies Zirar Focus">
       <figure class="hero-shot hero-shot--main">
-        <img src="/images/portfolio/danse-scene-blanc.webp" srcset="/images/portfolio/danse-scene-blanc-800.webp 800w, /images/portfolio/danse-scene-blanc.webp 1440w" sizes="(max-width: 950px) 62vw, 40vw" alt="Ensemble de danseuses en blanc sur scène" width="1440" height="1010" fetchpriority="high" decoding="async" />
-        <figcaption>Danse · Scène</figcaption>
+        <img src="/images/mariage/couple-danse-parc-zirar-focus.webp" srcset="/images/mariage/couple-danse-parc-zirar-focus-800.webp 800w, /images/mariage/couple-danse-parc-zirar-focus.webp 1440w" sizes="(max-width: 950px) 62vw, 40vw" alt="Deux mariés enlacés dansent au bord d’un bassin dans un parc arboré" width="1440" height="960" fetchpriority="high" decoding="async" />
+        <figcaption>Mariage · Émotion</figcaption>
       </figure>
       <figure class="hero-shot hero-shot--reel">
-        <img src="/images/portfolio/portrait-homme-noir-blanc.webp" srcset="/images/portfolio/portrait-homme-noir-blanc-800.webp 800w, /images/portfolio/portrait-homme-noir-blanc.webp 1440w" sizes="(max-width: 950px) 38vw, 22vw" alt="Portrait en noir et blanc réalisé par Zirar Focus" width="1440" height="1920" fetchpriority="high" decoding="async" />
-        <figcaption>Portrait · Regard</figcaption>
+        <img src="/images/mariage/instants-mariage-collage-zirar-focus.webp" srcset="/images/mariage/instants-mariage-collage-zirar-focus-800.webp 800w, /images/mariage/instants-mariage-collage-zirar-focus.webp 1440w" sizes="(max-width: 950px) 38vw, 22vw" alt="Montage de quatre instants de mariage : marié souriant, robe, étreinte et échange des alliances" width="1440" height="1920" loading="lazy" decoding="async" />
+        <figcaption>Mariage · Couple</figcaption>
       </figure>
       <figure class="hero-shot hero-shot--wide">
-        <img src="/images/portfolio/danse-mouvement-couleur.webp" srcset="/images/portfolio/danse-mouvement-couleur-800.webp 800w, /images/portfolio/danse-mouvement-couleur.webp 1600w" sizes="(max-width: 950px) 62vw, 40vw" alt="Danseuses en mouvement sous des lumières colorées" width="1600" height="1066" loading="lazy" decoding="async" />
-        <figcaption>Mouvement · Lumière</figcaption>
+        <img src="/images/mariage/reception-mariage-confettis-zirar-focus.webp" srcset="/images/mariage/reception-mariage-confettis-zirar-focus-800.webp 800w, /images/mariage/reception-mariage-confettis-zirar-focus.webp 1440w" sizes="(max-width: 950px) 62vw, 40vw" alt="Couple de mariés devant leur pièce montée sous une pluie de pétales blancs" width="1440" height="996" loading="lazy" decoding="async" />
+        <figcaption>Réception · Fête</figcaption>
       </figure>
       <span class="hero-collage__line" aria-hidden="true"></span>
     </div>
@@ -82,14 +83,14 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
         <div><p>Des prestations photo aux tarifs visibles, puis un devis qui confirme votre date, votre lieu et les options souhaitées.</p><a class="text-link" href="/tarifs-photographe-avignon/">Comparer tous les tarifs <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="home-offers__grid">
-        <article class="home-offer-card">
+        <article class="home-offer-card home-offer-card--featured">
           <span>01 · Mariage</span>
           <h3>Votre journée,<br />en récit.</h3>
           <p>Reportage des préparatifs jusqu’au cocktail, avec 250 photos ou plus et une galerie privée.</p>
           <div><small>Forfait photo dès</small><strong>1 750 €</strong></div>
           <a href="/contact/?offre=Mariage%20%E2%80%94%20Essentielle#devis">Vérifier ma date <span aria-hidden="true">↗</span></a>
         </article>
-        <article class="home-offer-card home-offer-card--featured">
+        <article class="home-offer-card">
           <span>02 · Séance photo</span>
           <h3>Un moment<br />pour vous.</h3>
           <p>Portrait, couple, famille, grossesse ou image professionnelle, guidé avec soin à Avignon.</p>
@@ -111,10 +112,10 @@ const featuredPortfolio = portfolio.filter((item) => item.width >= 1200);
   <section class="portfolio-section">
     <div class="wrap">
       <div class="section-head section-head--dark">
-        <div><p class="eyebrow eyebrow--light">Portfolio sélectionné</p><h2>Des visages. Du mouvement.<br /><em>Une lumière singulière.</em></h2></div>
-        <div class="section-aside"><p>Une sélection authentique de portraits, de spectacles et de reportages événementiels signés Zirar Focus.</p><a class="text-link text-link--light" href="/galerie/">Voir toute la galerie</a></div>
+        <div><p class="eyebrow eyebrow--light">Reportages de mariage</p><h2>Des gestes. Des regards.<br /><em>Une journée à revivre.</em></h2></div>
+        <div class="section-aside"><p>Sept instants de mariage photographiés par Zirar Focus, de la cérémonie aux éclats de la réception.</p><a class="text-link text-link--light" href="/photographe-mariage-avignon/">Découvrir le reportage mariage</a></div>
       </div>
-      <PortfolioGrid items={featuredPortfolio} compact={true} />
+      <PortfolioGrid items={weddingPortfolio} compact={true} />
     </div>
   </section>
 

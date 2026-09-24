@@ -1,9 +1,303 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': new URL('/a-propos/#zirar', Astro.site).toString(),
+  name: 'Zirar',
+  url: new URL('/a-propos/', Astro.site).toString(),
+  image: new URL('/images/zirar/portrait-zirar-studio.webp', Astro.site).toString(),
+  jobTitle: 'Photographe et vidéaste',
+  description: 'Photographe et vidéaste marocain de France, Zirar partage son activité entre Avignon et Casablanca.',
+  worksFor: { '@id': new URL('/#studio', Astro.site).toString() },
+  workLocation: [
+    { '@type': 'City', name: 'Avignon' },
+    { '@type': 'City', name: 'Casablanca' },
+  ],
+  sameAs: ['https://www.instagram.com/zirar_focus/'],
+};
+
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  '@id': new URL('/a-propos/#video-zirar', Astro.site).toString(),
+  name: 'Zirar derrière l’objectif — Zirar Focus',
+  description: 'Un Reel vertical qui présente Zirar, photographe et vidéaste, avec son appareil photo.',
+  thumbnailUrl: new URL('/images/zirar/zirar-reel-camera-poster.webp', Astro.site).toString(),
+  uploadDate: '2026-06-21T22:31:45Z',
+  duration: 'PT9S',
+  contentUrl: new URL('/videos/zirar-a-propos-reel-720p.mp4', Astro.site).toString(),
+  url: new URL('/a-propos/#film-title', Astro.site).toString(),
+  sameAs: 'https://www.instagram.com/reel/DZ3WBJfM2Hi/',
+  inLanguage: 'fr-FR',
+  publisher: { '@id': new URL('/#studio', Astro.site).toString() },
+};
 ---
-<BaseLayout title="À propos de Zirar Focus | Photographe & vidéaste Avignon" description="Découvrez l’approche de Zirar Focus, photographe et vidéaste basé à Avignon pour les mariages et événements en France, au Maroc et à l’international.">
-  <section class="page-hero"><div class="wrap"><p class="eyebrow">Le studio · Avignon</p><h1>Un regard pour <em>ce qui reste.</em></h1><p class="lead">Photographie et film au service des émotions, des liens et des moments qui méritent d’être transmis.</p></div></section>
-  <section class="section"><div class="wrap split-section"><div><p class="eyebrow">Zirar Focus</p><h2>Des images <em>sensibles et vivantes.</em></h2><div class="prose"><p>Zirar Focus accompagne les mariages et événements avec une attention particulière aux personnes, à la lumière et aux détails. L’ambition : créer des images qui portent le souvenir de ce que vous avez vécu.</p><p>Basé à Avignon, le studio travaille en Provence, en France, au Maroc et à l’international. La photographie et le film offrent deux façons complémentaires de faire vivre votre histoire.</p></div><a class="button dark" href="/contact/">Faire connaissance <span class="arrow" aria-hidden="true">↗</span></a></div><div class="motif-panel" aria-hidden="true"></div></div></section>
-  <section class="section" style="background:var(--cream)"><div class="wrap"><p class="eyebrow">Ce qui guide le regard</p><h2>Rester proche de <em>l’essentiel.</em></h2><div class="feature-grid"><div class="feature"><span class="number">01</span><h3>L’émotion</h3><p>Les expressions vraies, les gestes spontanés, les instants qui passent vite.</p></div><div class="feature"><span class="number">02</span><h3>L’esthétique</h3><p>Un soin apporté à la composition, à la lumière et à la cohérence du récit.</p></div><div class="feature"><span class="number">03</span><h3>La rencontre</h3><p>Une conversation en amont pour créer des images qui correspondent à votre projet.</p></div></div></div></section>
-  <section class="quote-panel"><div class="wrap"><p class="eyebrow">Rencontrons-nous</p><h2>Chaque histoire commence <em>par un échange.</em></h2><p>Racontez votre idée, votre lieu et votre date pour imaginer la suite ensemble.</p><a class="button light" href="/contact/">Écrire à Zirar Focus <span class="arrow" aria-hidden="true">↗</span></a></div></section>
+
+<BaseLayout
+  title="Zirar, photographe & vidéaste | À propos de Zirar Focus"
+  description="Découvrez Zirar, photographe et vidéaste marocain de France au regard esthétique, actif entre Avignon et Casablanca."
+  path="/a-propos/"
+  image="/images/zirar/portrait-zirar-studio.webp"
+  schema={[personSchema, videoSchema]}
+>
+  <section class="about-hero" aria-labelledby="about-title">
+    <div class="about-hero__copy">
+      <div class="about-hero__inner">
+        <p class="eyebrow eyebrow--light">Le visage derrière Zirar Focus</p>
+        <h1 id="about-title">Entre deux rives.<br /><em>Un même regard.</em></h1>
+        <p class="about-hero__lead">Jeune Marocain de France, photographe et vidéaste, Zirar compose son univers entre Avignon et Casablanca. Un regard guidé par l’esthétique, au service des histoires que vous souhaitez garder.</p>
+        <div class="about-hero__actions">
+          <a class="button button--gold" href="/contact/#devis">Parler de votre projet <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="text-link text-link--light" href="/galerie/">Découvrir son travail</a>
+        </div>
+      </div>
+      <div class="about-hero__places" aria-label="Activité entre Avignon et Casablanca">
+        <span>Avignon</span><i aria-hidden="true"></i><span>Casablanca</span><i aria-hidden="true"></i><span>Photo & film</span>
+      </div>
+    </div>
+
+    <figure class="about-hero__portrait">
+      <img
+        src="/images/zirar/portrait-zirar-studio.webp"
+        srcset="/images/zirar/portrait-zirar-studio-800.webp 800w, /images/zirar/portrait-zirar-studio.webp 1440w"
+        sizes="(max-width: 900px) 100vw, 52vw"
+        width="1440"
+        height="1920"
+        alt="Portrait de Zirar, photographe et vidéaste"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <figcaption><span>Zirar</span><small>Photographe · Vidéaste</small></figcaption>
+      <span class="about-hero__mark" aria-hidden="true">ZF</span>
+    </figure>
+  </section>
+
+  <section class="about-story" aria-labelledby="story-title">
+    <div class="wrap about-story__head">
+      <p class="eyebrow">Son histoire</p>
+      <h2 id="story-title">Deux horizons.<br /><em>Une même signature.</em></h2>
+    </div>
+    <div class="wrap about-story__body">
+      <p class="about-story__intro">Avant d’être une image, chaque projet commence par un regard : celui qui remarque la lumière, le geste et l’émotion d’un instant.</p>
+      <div class="about-story__prose">
+        <p>Jeune Marocain de France, Zirar partage aujourd’hui son activité entre Avignon et Casablanca. Ces deux villes donnent à son parcours un double ancrage, en France et au Maroc.</p>
+        <p>Photographe et vidéaste, il se distingue par un sens aigu de l’esthétique. La photographie saisit l’instant ; le film en retrouve le mouvement. Ensemble, ces deux langages lui permettent de construire des souvenirs qui ont du relief et une présence.</p>
+        <p>Étoile montante au sein de la diaspora marocaine, Zirar met son regard au service de votre histoire, en photographie comme en vidéo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-world" aria-labelledby="world-title">
+    <figure class="about-world__image">
+      <img
+        src="/images/zirar/zirar-exposition-noir-blanc.webp"
+        srcset="/images/zirar/zirar-exposition-noir-blanc-800.webp 800w, /images/zirar/zirar-exposition-noir-blanc.webp 1440w"
+        sizes="(max-width: 900px) 100vw, 55vw"
+        width="1440"
+        height="960"
+        alt="Zirar observant une série de photographies exposées en noir et blanc"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>Le regard derrière l’objectif</figcaption>
+    </figure>
+    <div class="about-world__content">
+      <p class="eyebrow eyebrow--light">Deux ancrages</p>
+      <h2 id="world-title">Avignon.<br />Casablanca.<br /><em>Et vos histoires.</em></h2>
+      <p>De la Provence au Maroc, Zirar fait dialoguer les lieux, les cultures et les sensibilités. Votre projet devient le prochain espace de cette rencontre.</p>
+      <dl class="about-world__locations">
+        <div><dt>01</dt><dd><strong>Avignon</strong><span>Son ancrage en France</span></dd></div>
+        <div><dt>02</dt><dd><strong>Casablanca</strong><span>Son ancrage au Maroc</span></dd></div>
+      </dl>
+      <a class="text-link text-link--light" href="/contact/#devis">Présenter votre projet <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="about-signature" aria-labelledby="signature-title">
+    <div class="wrap">
+      <div class="about-signature__head">
+        <div>
+          <p class="eyebrow">La signature Zirar Focus</p>
+          <h2 id="signature-title">Une vision qui donne<br /><em>du sens à l’image.</em></h2>
+        </div>
+        <p>Choisir Zirar Focus, c’est confier votre projet à un créateur qui réunit photographie, vidéo et sens esthétique dans un même univers.</p>
+      </div>
+      <div class="about-signature__grid">
+        <article><span>01</span><h3>Le regard</h3><p>Une attention portée à la composition, à la lumière et à ce qui rend chaque scène unique.</p></article>
+        <article><span>02</span><h3>Photo & film</h3><p>Deux écritures complémentaires pour saisir un instant et retrouver son mouvement.</p></article>
+        <article><span>03</span><h3>Deux cultures</h3><p>Une identité nourrie par la France et le Maroc, ouverte aux histoires qui traversent les frontières.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-film" aria-labelledby="film-title">
+    <div class="wrap about-film__grid">
+      <div class="about-film__copy">
+        <p class="eyebrow eyebrow--light">Dans l’action</p>
+        <span class="about-film__chapter">04 / Derrière l’objectif</span>
+        <h2 id="film-title">Voir Zirar<br /><em>en mouvement.</em></h2>
+        <p>Découvrez Zirar sur le terrain, appareil en main. Quelques secondes pour entrer dans son univers et rencontrer celui qui racontera peut-être votre prochain moment fort.</p>
+        <div class="about-film__actions">
+          <a class="button button--gold" href="/contact/#devis">Échanger avec Zirar <span class="arrow" aria-hidden="true">↗</span></a>
+          <a class="text-link text-link--light" href="https://www.instagram.com/reel/DZ3WBJfM2Hi/" target="_blank" rel="noopener noreferrer">Voir le Reel sur Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <figure class="about-film__media">
+        <video
+          controls
+          playsinline
+          preload="none"
+          poster="/images/zirar/zirar-reel-camera-poster.webp"
+          width="720"
+          height="1280"
+          aria-label="Vidéo de Zirar avec son appareil photo"
+          aria-describedby="about-film-caption"
+        >
+          <source src="/videos/zirar-a-propos-reel-720p.mp4" type="video/mp4" />
+          Votre navigateur ne prend pas en charge cette vidéo.
+        </video>
+        <figcaption id="about-film-caption">Un moment avec Zirar · Zirar apparaît avec son appareil ; le montage présente la photographie comme son « langage de l’amour ».</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="about-next" aria-labelledby="next-title">
+    <div class="wrap">
+      <p class="eyebrow eyebrow--light">La prochaine image</p>
+      <h2 id="next-title">Votre histoire mérite<br /><em>un regard singulier.</em></h2>
+      <p>Racontez à Zirar votre date, votre lieu et ce que vous souhaitez garder de ce moment.</p>
+      <div class="about-next__actions">
+        <a class="button button--gold" href="/contact/#devis">Demander un devis <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="text-link text-link--light" href="/galerie/">Parcourir la galerie</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .about-hero{display:grid;grid-template-columns:minmax(420px,.9fr) minmax(480px,1.1fr);min-height:calc(100svh - 124px);background:var(--ink);color:#f7f1e8;overflow:hidden}
+  .about-hero__copy{position:relative;display:flex;align-items:center;padding:clamp(75px,8vw,130px) 6.5vw 115px max(36px,calc((100vw - 1420px)/2));isolation:isolate}
+  .about-hero__copy:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 12% 12%,rgba(197,232,206,.1),transparent 35%),linear-gradient(145deg,#101a16,#1b2c23);z-index:-1}
+  .about-hero__inner{position:relative;z-index:1;max-width:680px}
+  .about-hero h1{margin:0 0 32px;font-size:clamp(56px,6.1vw,100px);color:#f7f1e8}
+  .about-hero h1 em{color:var(--gold-bright)}
+  .about-hero__lead{max-width:610px;margin-bottom:37px;color:#cbd5cc;font-size:clamp(17px,1.3vw,21px);line-height:1.75}
+  .about-hero__actions,.about-next__actions,.about-film__actions{display:flex;align-items:center;flex-wrap:wrap;gap:27px}
+  .about-hero__places{position:absolute;left:max(36px,calc((100vw - 1420px)/2));right:6.5vw;bottom:31px;display:flex;align-items:center;gap:14px;color:#8fa296;font-size:9px;font-weight:750;letter-spacing:.2em;text-transform:uppercase}
+  .about-hero__places i{width:22px;height:1px;background:#54705e}
+  .about-hero__portrait{position:relative;min-height:760px;margin:0;background:#151916;overflow:hidden}
+  .about-hero__portrait:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,27,23,.14),transparent 35%),linear-gradient(0deg,rgba(9,15,12,.7),transparent 34%);pointer-events:none}
+  .about-hero__portrait img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+  .about-hero__portrait figcaption{position:absolute;z-index:2;left:7%;bottom:5%;display:flex;align-items:end;gap:17px;color:#fff}
+  .about-hero__portrait figcaption span{font-size:clamp(34px,4vw,61px);font-weight:700;line-height:1;letter-spacing:-.05em}
+  .about-hero__portrait figcaption small{padding-bottom:5px;color:#dbe6dc;font-size:9px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
+  .about-hero__mark{position:absolute;z-index:2;right:5%;top:4%;color:rgba(255,255,255,.75);font-size:10px;font-weight:800;letter-spacing:.3em;writing-mode:vertical-rl}
+
+  .about-story{padding:clamp(95px,10vw,160px) 0;background:var(--paper)}
+  .about-story__head{display:grid;grid-template-columns:minmax(150px,.45fr) 1.55fr;gap:50px;padding-bottom:clamp(65px,7vw,105px);border-bottom:1px solid var(--line)}
+  .about-story__head h2{max-width:1050px;margin:0}
+  .about-story__body{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(60px,9vw,150px);padding-top:clamp(65px,7vw,105px)}
+  .about-story__intro{font-size:clamp(27px,2.4vw,39px);font-weight:650;line-height:1.3;letter-spacing:-.035em}
+  .about-story__prose{max-width:710px;color:#506058;font-size:clamp(17px,1.25vw,20px);line-height:1.85}
+  .about-story__prose p:last-child{margin-bottom:0}
+
+  .about-world{display:grid;grid-template-columns:1.08fr .92fr;min-height:760px;background:var(--ink);color:#f4f7f1}
+  .about-world__image{position:relative;min-height:680px;margin:0;overflow:hidden}
+  .about-world__image:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 65%,rgba(17,27,23,.45))}
+  .about-world__image img{width:100%;height:100%;object-fit:cover}
+  .about-world__image figcaption{position:absolute;z-index:2;left:5%;bottom:5%;padding:9px 13px;background:rgba(10,15,12,.72);color:#e1e7e1;font-size:9px;font-weight:750;letter-spacing:.16em;text-transform:uppercase}
+  .about-world__content{display:flex;flex-direction:column;justify-content:center;padding:clamp(75px,8vw,135px) max(36px,calc((100vw - 1420px)/2)) clamp(75px,8vw,135px) clamp(45px,6vw,105px)}
+  .about-world h2{margin:0 0 32px;color:#f4f7f1;font-size:clamp(50px,5vw,83px)}
+  .about-world h2 em{color:var(--gold-bright)}
+  .about-world__content>p:not(.eyebrow){max-width:590px;margin-bottom:42px;color:#bfcac1;font-size:18px;line-height:1.75}
+  .about-world__locations{margin:0 0 39px;border-top:1px solid rgba(255,255,255,.18)}
+  .about-world__locations>div{display:grid;grid-template-columns:55px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .about-world__locations dt{color:var(--gold-bright);font-size:11px;font-weight:750;letter-spacing:.15em}
+  .about-world__locations dd{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:0}
+  .about-world__locations strong{font-size:24px;line-height:1.2}
+  .about-world__locations span{color:#96a79c;font-size:10px;letter-spacing:.13em;text-transform:uppercase}
+  .about-world .text-link{align-self:flex-start}
+
+  .about-signature{padding:clamp(100px,10vw,165px) 0;background:#eaf0e8}
+  .about-signature__head{display:grid;grid-template-columns:1.35fr .65fr;align-items:end;gap:clamp(50px,8vw,130px);margin-bottom:clamp(70px,8vw,115px)}
+  .about-signature__head h2{margin-bottom:0}
+  .about-signature__head>p{max-width:490px;margin-bottom:8px;color:#536158;font-size:18px;line-height:1.8}
+  .about-signature__grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #bfcfc3;border-bottom:1px solid #bfcfc3}
+  .about-signature article{min-height:390px;padding:35px clamp(24px,3vw,50px) 42px 0}
+  .about-signature article+article{padding-left:clamp(24px,3vw,50px);border-left:1px solid #bfcfc3}
+  .about-signature article>span{color:var(--gold);font-size:10px;font-weight:800;letter-spacing:.16em}
+  .about-signature h3{margin:95px 0 22px;font-size:clamp(34px,3vw,50px)}
+  .about-signature article p{max-width:365px;margin:0;color:#58665e;line-height:1.8}
+
+  .about-film{padding:clamp(95px,10vw,165px) 0;background:#17271f;color:#f4f6f1;overflow:hidden}
+  .about-film__grid{display:grid;grid-template-columns:1fr minmax(360px,.62fr);align-items:center;gap:clamp(65px,10vw,170px)}
+  .about-film__copy{position:relative}
+  .about-film__chapter{display:block;margin-bottom:clamp(65px,8vw,120px);color:#789181;font-size:9px;font-weight:750;letter-spacing:.18em;text-transform:uppercase}
+  .about-film h2{margin-bottom:33px;color:#f5f7f2}
+  .about-film h2 em{color:var(--gold-bright)}
+  .about-film__copy>p:not(.eyebrow){max-width:635px;margin-bottom:38px;color:#bac8bf;font-size:18px;line-height:1.8}
+  .about-film__media{position:relative;max-width:510px;margin:0 auto;padding:15px;border:1px solid rgba(197,232,206,.32)}
+  .about-film__media:before{content:'';position:absolute;z-index:0;inset:-70px -110px 35%;background:radial-gradient(circle,rgba(197,232,206,.12),transparent 68%);pointer-events:none}
+  .about-film video{position:relative;z-index:1;display:block;width:100%;height:auto;max-height:760px;background:#090d0b;object-fit:cover}
+  .about-film figcaption{position:relative;z-index:1;padding:15px 4px 1px;color:#819488;font-size:9px;font-weight:750;letter-spacing:.16em;text-transform:uppercase}
+
+  .about-next{position:relative;padding:clamp(105px,11vw,175px) 0;background:#0d1612;color:#f5f6f1;text-align:center;overflow:hidden}
+  .about-next:before{content:'ZIRAR';position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);color:rgba(255,255,255,.026);font-size:min(24vw,360px);font-weight:750;letter-spacing:-.08em;white-space:nowrap}
+  .about-next .wrap{position:relative;z-index:1}
+  .about-next h2{max-width:1050px;margin:0 auto 30px;color:#f5f6f1}
+  .about-next h2 em{color:var(--gold-bright)}
+  .about-next p:not(.eyebrow){max-width:650px;margin:0 auto 39px;color:#bbc7bf;font-size:18px}
+  .about-next__actions{justify-content:center}
+
+  @media(max-width:1050px){
+    .about-hero{grid-template-columns:.95fr 1.05fr}
+    .about-hero__copy{padding-left:36px}
+    .about-hero__places{left:36px}
+    .about-world__content{padding-right:36px}
+    .about-story__body{gap:60px}
+    .about-film__grid{gap:60px}
+  }
+
+  @media(max-width:900px){
+    .about-hero{grid-template-columns:1fr;min-height:0}
+    .about-hero__copy{min-height:680px;padding:90px max(24px,5vw) 105px}
+    .about-hero__places{left:max(24px,5vw);right:max(24px,5vw)}
+    .about-hero__portrait{min-height:760px;max-height:920px}
+    .about-story__head,.about-story__body,.about-signature__head,.about-film__grid{grid-template-columns:1fr}
+    .about-story__head{gap:15px}
+    .about-story__body{gap:35px}
+    .about-story__intro{max-width:680px}
+    .about-world{grid-template-columns:1fr}
+    .about-world__image{min-height:620px}
+    .about-world__image:after{background:linear-gradient(0deg,rgba(17,27,23,.42),transparent 38%)}
+    .about-world__content{padding:85px max(24px,5vw) 95px}
+    .about-signature__head{gap:30px}
+    .about-signature__head>p{max-width:680px}
+    .about-film__grid{justify-items:center}
+    .about-film__copy{width:100%}
+    .about-film__chapter{margin-bottom:55px}
+    .about-film__media{width:min(100%,500px)}
+  }
+
+  @media(max-width:680px){
+    .about-hero__copy{min-height:650px;padding-top:75px}
+    .about-hero h1{font-size:clamp(51px,15vw,73px)}
+    .about-hero__actions,.about-film__actions,.about-next__actions{align-items:stretch;flex-direction:column}
+    .about-hero__actions .text-link,.about-film__actions .text-link,.about-next__actions .text-link{align-self:flex-start}
+    .about-hero__portrait{min-height:570px;max-height:730px}
+    .about-hero__portrait figcaption{left:24px;bottom:25px}
+    .about-hero__portrait figcaption small{display:none}
+    .about-story__head,.about-story__body{width:min(100% - 40px,1420px)}
+    .about-world__image{min-height:430px}
+    .about-world__locations dd{align-items:flex-start;flex-direction:column;gap:5px}
+    .about-signature__grid{grid-template-columns:1fr}
+    .about-signature article{min-height:0;padding:29px 0 35px}
+    .about-signature article+article{padding-left:0;border-top:1px solid #bfcfc3;border-left:0}
+    .about-signature h3{margin:45px 0 18px}
+    .about-film__grid{width:min(100% - 40px,1420px)}
+    .about-film__media{padding:9px}
+    .about-next .button{width:100%}
+  }
+</style>
